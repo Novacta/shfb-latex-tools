@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpTOC>
+
+  <HelpTOCNode Title="Welcome" Url="html/fe868fbe-1bfd-47f7-bf24-e1fd586864c6.htm" />
+  <HelpTOCNode Title="License agreement" Url="html/77c2fac9-a810-4e5b-ba0e-afff50a42467.htm" />
+  <HelpTOCNode Title="Adding LaTeX equations" Url="html/47a5afe5-726c-4f74-9ab1-90740bf0a692.htm" />
+  <HelpTOCNode Id="b6886c82-e5b9-4ba6-9e94-6199f2275889" Title="Version History" Url="html/7abd97df-f098-4afa-9f9c-2255d3e61a33.htm">
+    <HelpTOCNode Title="Version 1.0.0" Url="html/cf22a47c-7bfd-4e16-a103-b99e83335270.htm" />
+  </HelpTOCNode>
+  <HelpTOCNode Id="e21ed58e-bdfd-4517-9f37-b4b650aa7e74" Title="Novacta.Shfb Namespaces" Url="html/G_Novacta_Shfb.htm">
+    <HelpTOCNode Id="eb1a798c-74c8-4397-977e-0cf21f9d29d3" Title="Novacta.Shfb.LatexTools" Url="html/N_Novacta_Shfb_LatexTools.htm">
+      <HelpTOCNode Id="45c05e58-f2f9-4571-80ec-357eb56bff45" Title="DviPngProcessor Class" Url="html/T_Novacta_Shfb_LatexTools_DviPngProcessor.htm">
+        <HelpTOCNode Title="DviPngProcessor Constructor " Url="html/M_Novacta_Shfb_LatexTools_DviPngProcessor__ctor.htm" />
+        <HelpTOCNode Id="db374574-484d-46b9-8206-43b77f946bbf" Title="DviPngProcessor Properties" Url="html/Properties_T_Novacta_Shfb_LatexTools_DviPngProcessor.htm">
+          <HelpTOCNode Title="Executable Property " Url="html/P_Novacta_Shfb_LatexTools_DviPngProcessor_Executable.htm" />
+          <HelpTOCNode Title="WorkingDirectory Property " Url="html/P_Novacta_Shfb_LatexTools_DviPngProcessor_WorkingDirectory.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="559a7f85-1838-417d-b601-4034f37993ab" Title="DviPngProcessor Methods" Url="html/Methods_T_Novacta_Shfb_LatexTools_DviPngProcessor.htm">
+          <HelpTOCNode Title="Arguments Method " Url="html/M_Novacta_Shfb_LatexTools_DviPngProcessor_Arguments.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="901849c0-a4a5-401e-9f04-5c771eacbc25" Title="DviSvgmProcessor Class" Url="html/T_Novacta_Shfb_LatexTools_DviSvgmProcessor.htm">
+        <HelpTOCNode Title="DviSvgmProcessor Constructor " Url="html/M_Novacta_Shfb_LatexTools_DviSvgmProcessor__ctor.htm" />
+        <HelpTOCNode Id="2c826939-06a9-4703-a212-83946a358220" Title="DviSvgmProcessor Properties" Url="html/Properties_T_Novacta_Shfb_LatexTools_DviSvgmProcessor.htm">
+          <HelpTOCNode Title="Executable Property " Url="html/P_Novacta_Shfb_LatexTools_DviSvgmProcessor_Executable.htm" />
+          <HelpTOCNode Title="WorkingDirectory Property " Url="html/P_Novacta_Shfb_LatexTools_DviSvgmProcessor_WorkingDirectory.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="8bbd9f32-10f0-4c6e-bd44-34e43d7410b7" Title="DviSvgmProcessor Methods" Url="html/Methods_T_Novacta_Shfb_LatexTools_DviSvgmProcessor.htm">
+          <HelpTOCNode Title="Arguments Method " Url="html/M_Novacta_Shfb_LatexTools_DviSvgmProcessor_Arguments.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="a6ed6ff1-ef2d-49c1-9882-08c22fa50846" Title="FileProcessor Class" Url="html/T_Novacta_Shfb_LatexTools_FileProcessor.htm">
+        <HelpTOCNode Title="FileProcessor Constructor " Url="html/M_Novacta_Shfb_LatexTools_FileProcessor__ctor.htm" />
+        <HelpTOCNode Id="32e52c86-5abc-4c32-b6ba-1d1e34fe11f1" Title="FileProcessor Properties" Url="html/Properties_T_Novacta_Shfb_LatexTools_FileProcessor.htm">
+          <HelpTOCNode Title="Executable Property " Url="html/P_Novacta_Shfb_LatexTools_FileProcessor_Executable.htm" />
+          <HelpTOCNode Title="WorkingDirectory Property " Url="html/P_Novacta_Shfb_LatexTools_FileProcessor_WorkingDirectory.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="62126925-3af1-45ab-b6dc-70f40e95d172" Title="FileProcessor Methods" Url="html/Methods_T_Novacta_Shfb_LatexTools_FileProcessor.htm">
+          <HelpTOCNode Title="Arguments Method " Url="html/M_Novacta_Shfb_LatexTools_FileProcessor_Arguments.htm" />
+          <HelpTOCNode Id="938624ed-b860-42e9-b1da-66bd287701ae" Title="Run Method " Url="html/Overload_Novacta_Shfb_LatexTools_FileProcessor_Run.htm">
+            <HelpTOCNode Title="Run Method (String)" Url="html/M_Novacta_Shfb_LatexTools_FileProcessor_Run.htm" />
+            <HelpTOCNode Title="Run Method (String, String)" Url="html/M_Novacta_Shfb_LatexTools_FileProcessor_Run_1.htm" />
+          </HelpTOCNode>
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="5161d5fb-14d8-48b8-bff9-fbb4ed08c1b9" Title="LatexComponent Class" Url="html/T_Novacta_Shfb_LatexTools_LatexComponent.htm">
+        <HelpTOCNode Title="LatexComponent Constructor " Url="html/M_Novacta_Shfb_LatexTools_LatexComponent__ctor.htm" />
+        <HelpTOCNode Title="LatexComponent Properties" Url="html/Properties_T_Novacta_Shfb_LatexTools_LatexComponent.htm" />
+        <HelpTOCNode Id="8d39f60a-9893-4f28-9c47-bc6e4a53530a" Title="LatexComponent Methods" Url="html/Methods_T_Novacta_Shfb_LatexTools_LatexComponent.htm">
+          <HelpTOCNode Title="Apply Method " Url="html/M_Novacta_Shfb_LatexTools_LatexComponent_Apply.htm" />
+          <HelpTOCNode Title="Initialize Method " Url="html/M_Novacta_Shfb_LatexTools_LatexComponent_Initialize.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="c21d19f1-d759-4384-894a-750222d4b79c" Title="LatexComponent.Factory Class" Url="html/T_Novacta_Shfb_LatexTools_LatexComponent_Factory.htm">
+        <HelpTOCNode Title="LatexComponent.Factory Constructor " Url="html/M_Novacta_Shfb_LatexTools_LatexComponent_Factory__ctor.htm" />
+        <HelpTOCNode Id="380e31f2-2b93-4008-b1f7-16d97441a659" Title="Factory Properties" Url="html/Properties_T_Novacta_Shfb_LatexTools_LatexComponent_Factory.htm">
+          <HelpTOCNode Title="DefaultConfiguration Property " Url="html/P_Novacta_Shfb_LatexTools_LatexComponent_Factory_DefaultConfiguration.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="6af01315-a4cb-4a63-ba3a-6bff697e9dfc" Title="Factory Methods" Url="html/Methods_T_Novacta_Shfb_LatexTools_LatexComponent_Factory.htm">
+          <HelpTOCNode Title="Create Method " Url="html/M_Novacta_Shfb_LatexTools_LatexComponent_Factory_Create.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="f36a98d0-9e3e-4d5d-9be3-3d52c33678d3" Title="LatexPlugIn Class" Url="html/T_Novacta_Shfb_LatexTools_LatexPlugIn.htm">
+        <HelpTOCNode Title="LatexPlugIn Constructor " Url="html/M_Novacta_Shfb_LatexTools_LatexPlugIn__ctor.htm" />
+        <HelpTOCNode Id="86f46a23-f5e2-4a27-b062-cfce748892cd" Title="LatexPlugIn Properties" Url="html/Properties_T_Novacta_Shfb_LatexTools_LatexPlugIn.htm">
+          <HelpTOCNode Title="ExecutionPoints Property " Url="html/P_Novacta_Shfb_LatexTools_LatexPlugIn_ExecutionPoints.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="142ed7f1-f3c2-4ec9-abf1-e3d9c59c63e9" Title="LatexPlugIn Methods" Url="html/Methods_T_Novacta_Shfb_LatexTools_LatexPlugIn.htm">
+          <HelpTOCNode Title="Dispose Method " Url="html/M_Novacta_Shfb_LatexTools_LatexPlugIn_Dispose.htm" />
+          <HelpTOCNode Title="Execute Method " Url="html/M_Novacta_Shfb_LatexTools_LatexPlugIn_Execute.htm" />
+          <HelpTOCNode Title="Finalize Method " Url="html/M_Novacta_Shfb_LatexTools_LatexPlugIn_Finalize.htm" />
+          <HelpTOCNode Title="Initialize Method " Url="html/M_Novacta_Shfb_LatexTools_LatexPlugIn_Initialize.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="88e0ba13-c05f-4820-bf09-fa94e2e9b5a0" Title="LatexProcessor Class" Url="html/T_Novacta_Shfb_LatexTools_LatexProcessor.htm">
+        <HelpTOCNode Title="LatexProcessor Constructor " Url="html/M_Novacta_Shfb_LatexTools_LatexProcessor__ctor.htm" />
+        <HelpTOCNode Id="803cc68a-f791-46e3-91e1-e83e025a4816" Title="LatexProcessor Properties" Url="html/Properties_T_Novacta_Shfb_LatexTools_LatexProcessor.htm">
+          <HelpTOCNode Title="Executable Property " Url="html/P_Novacta_Shfb_LatexTools_LatexProcessor_Executable.htm" />
+          <HelpTOCNode Title="WorkingDirectory Property " Url="html/P_Novacta_Shfb_LatexTools_LatexProcessor_WorkingDirectory.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="4ae74b09-d9c4-4384-9f2c-5d737b7026bd" Title="LatexProcessor Methods" Url="html/Methods_T_Novacta_Shfb_LatexTools_LatexProcessor.htm">
+          <HelpTOCNode Title="Arguments Method " Url="html/M_Novacta_Shfb_LatexTools_LatexProcessor_Arguments.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="c483eff3-c7d2-41f2-a385-15493161c742" Title="Novacta.Shfb.LatexTools.PresentationStyles" Url="html/N_Novacta_Shfb_LatexTools_PresentationStyles.htm">
+      <HelpTOCNode Id="c4535655-d65a-46bb-b83f-e364a5af714f" Title="VS2010WithLatex Class" Url="html/T_Novacta_Shfb_LatexTools_PresentationStyles_VS2010WithLatex.htm">
+        <HelpTOCNode Title="VS2010WithLatex Constructor " Url="html/M_Novacta_Shfb_LatexTools_PresentationStyles_VS2010WithLatex__ctor.htm" />
+        <HelpTOCNode Id="d21c8530-5c05-41a3-ab86-c91ead0a9db1" Title="VS2010WithLatex Properties" Url="html/Properties_T_Novacta_Shfb_LatexTools_PresentationStyles_VS2010WithLatex.htm">
+          <HelpTOCNode Title="Location Property " Url="html/P_Novacta_Shfb_LatexTools_PresentationStyles_VS2010WithLatex_Location.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="VS2010WithLatex Methods" Url="html/Methods_T_Novacta_Shfb_LatexTools_PresentationStyles_VS2010WithLatex.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="b21f2ea1-e980-46c5-ba36-db2ba4906aec" Title="VS2013WithLatex Class" Url="html/T_Novacta_Shfb_LatexTools_PresentationStyles_VS2013WithLatex.htm">
+        <HelpTOCNode Title="VS2013WithLatex Constructor " Url="html/M_Novacta_Shfb_LatexTools_PresentationStyles_VS2013WithLatex__ctor.htm" />
+        <HelpTOCNode Id="b57735a8-97d9-43a4-a11d-febd35ca9bf4" Title="VS2013WithLatex Properties" Url="html/Properties_T_Novacta_Shfb_LatexTools_PresentationStyles_VS2013WithLatex.htm">
+          <HelpTOCNode Title="Location Property " Url="html/P_Novacta_Shfb_LatexTools_PresentationStyles_VS2013WithLatex_Location.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="VS2013WithLatex Methods" Url="html/Methods_T_Novacta_Shfb_LatexTools_PresentationStyles_VS2013WithLatex.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="3c47cd56-74fa-4300-a0ac-9956834a9ca4" Title="SampleClassLibrary Namespaces" Url="html/G_SampleClassLibrary.htm">
+    <HelpTOCNode Id="dfeafd73-3f33-4cb9-b954-c57c797f3ab1" Title="SampleClassLibrary" Url="html/N_SampleClassLibrary.htm">
+      <HelpTOCNode Id="56174607-a69e-4e2f-85b1-c783191e5759" Title="IntegerOperation Class" Url="html/T_SampleClassLibrary_IntegerOperation.htm">
+        <HelpTOCNode Id="65af06c6-d1a1-44d3-ad8b-14d41f9af47c" Title="IntegerOperation Methods" Url="html/Methods_T_SampleClassLibrary_IntegerOperation.htm">
+          <HelpTOCNode Title="Operate Method " Url="html/M_SampleClassLibrary_IntegerOperation_Operate.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="938f61b3-1590-4141-acaa-5eb064eeca8e" Title="SampleClassLibrary.Advanced" Url="html/N_SampleClassLibrary_Advanced.htm">
+      <HelpTOCNode Id="a9d62517-3a2e-4832-802b-fcbf90054333" Title="IntegerArrayOperation Class" Url="html/T_SampleClassLibrary_Advanced_IntegerArrayOperation.htm">
+        <HelpTOCNode Id="fbfc1019-b85f-41a8-b859-1a2f5ce697fd" Title="IntegerArrayOperation Methods" Url="html/Methods_T_SampleClassLibrary_Advanced_IntegerArrayOperation.htm">
+          <HelpTOCNode Title="Operate Method " Url="html/M_SampleClassLibrary_Advanced_IntegerArrayOperation_Operate.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+</HelpTOC>

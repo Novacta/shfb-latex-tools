@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Topics>
+  <Topic id="fe868fbe-1bfd-47f7-bf24-e1fd586864c6" visible="True" isDefault="true" title="Welcome">
+    <HelpKeywords>
+      <HelpKeyword index="K" term="Welcome" />
+    </HelpKeywords>
+  </Topic>
+  <Topic id="77c2fac9-a810-4e5b-ba0e-afff50a42467" visible="True" title="License agreement" />
+  <Topic id="47a5afe5-726c-4f74-9ab1-90740bf0a692" visible="True" title="Adding LaTeX equations" />
+  <Topic id="b10d4d75-3729-4247-a58a-b9e5b6e4bb4d" visible="False" title="Operating on integers" />
+  <Topic id="7abd97df-f098-4afa-9f9c-2255d3e61a33" visible="True" isExpanded="true" title="Version History">
+    <HelpKeywords>
+      <HelpKeyword index="K" term="version, history" />
+    </HelpKeywords>
+    <Topic id="cf22a47c-7bfd-4e16-a103-b99e83335270" visible="True" isSelected="true" title="Version 1.0.0">
+      <HelpKeywords>
+        <HelpKeyword index="K" term="version, 1.0.0" />
+      </HelpKeywords>
+    </Topic>
+  </Topic>
+</Topics>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="cf22a47c-7bfd-4e16-a103-b99e83335270" revisionNumber="1">
+  <developerConceptualDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+	  <introduction>
+		  <para>
+			  Version 1.0.0 was released on November 15 2021.
+		  </para>
+	  </introduction>
+
+	  <section>
+		  <title>Changes in This Release</title>
+		  <content>
+
+			  <list class="bullet">
+				  <listItem>
+					  <para>Initial release of the assembly.</para>
+				  </listItem>
+
+			  </list>
+
+		  </content>
+	  </section>
+	  <relatedTopics>
+		  <link xlink:href="7abd97df-f098-4afa-9f9c-2255d3e61a33" />
+	  </relatedTopics>
+  </developerConceptualDocument>
+</topic>

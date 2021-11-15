@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="4c3871a5-d7c6-477c-96ee-e71f0a67f7a8" revisionNumber="1">
+  <developerConceptualDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:ltx="http://www.novacta.net/2018/XSL/ShfbLatexTools">
+    <introduction>
+      <para>
+        Class <codeEntityReference qualifyHint="false">
+          T:SampleClassLibrary.Advanced.IntegerArrayOperation
+        </codeEntityReference> provides method
+        <codeEntityReference qualifyHint="false">
+          M:SampleClassLibrary.Advanced.IntegerArrayOperation.Operate(System.Func{System.Int32,System.Int32},System.Int32[])
+        </codeEntityReference>
+        to manage operations on integer values.
+      </para>
+      <para>
+        In the following example, an integer is squared
+        executing the <codeEntityReference qualifyHint="false">
+          M:SampleClassLibrary.Advanced.IntegerArrayOperation.Operate(System.Func{System.Int32,System.Int32},System.Int32[])
+        </codeEntityReference> method.
+        This is equivalent to define the applied function,
+        say <ltx:latex mode="inline">f:\mathbb{N}\rightarrow \mathbb{N},</ltx:latex>
+        as <ltx:latex>\forall n \in \mathbb{N}: n \mapsto f\left(n\right)=n^2.</ltx:latex>
+        In addition, input validation is also checked.
+      </para>
+      <code source="..\SampleClassLibrary\Advanced\IntegerArrayOperationExample.cs.txt"
+        language="cs" title="C#" />
+    </introduction>
+
+    <relatedTopics>
+      <link xlink:href="b10d4d75-3729-4247-a58a-b9e5b6e4bb4d" />
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>
