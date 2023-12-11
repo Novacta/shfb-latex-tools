@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<topic id="c711650b-cb39-4fce-8938-885a71d52e6f" revisionNumber="1">
+<topic id="251c661a-8a0a-449b-92fa-0ee906ee4773" revisionNumber="1">
 	<developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
 		<introduction>
-			<para>The topics in this section describe the various changes made to the SampleClassLibrary project over the
+			<para>The topics in this section describe the various changes made to the 
+			SampleClassLibrary over the
 life of the project.</para>
 		</introduction>
 
@@ -13,7 +14,7 @@ life of the project.</para>
 
 				<list class="bullet">
 					<listItem>
-						<para><link xlink:href="a6fc421b-f7f2-4b02-a2e2-d703be7ebaa4" /></para>
+						<para><link xlink:href="2c501263-1f40-4015-a446-9d14049fae10" /></para>
 					</listItem>
 
 				</list>
@@ -22,7 +23,7 @@ life of the project.</para>
 		</section>
 
 		<relatedTopics>
-			<link xlink:href="3df11b4d-ed21-48e5-8eb5-a1f6cf79c534" />
+			<link xlink:href="15de5c0e-e274-4b7c-a03d-2f4f90e77a86" />
 		</relatedTopics>
 
 	</developerConceptualDocument>

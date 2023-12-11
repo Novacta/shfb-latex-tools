@@ -2,6 +2,7 @@
 // Licensed under the MIT license. 
 // See the LICENSE file in the project root for more information.
 
+using Sandcastle.Core;
 using Sandcastle.Core.BuildAssembler;
 using Sandcastle.Core.BuildAssembler.BuildComponent;
 using System;
@@ -10,6 +11,7 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Xml;
+using System.Xml.Linq;
 using System.Xml.XPath;
 
 namespace Novacta.Shfb.LatexTools
@@ -20,7 +22,82 @@ namespace Novacta.Shfb.LatexTools
     /// </summary>
     public class LatexComponent : BuildComponentCore
     {
+        #region Build component factory for MEF
+        
+        /// <summary>
+        /// Creates a new instance of the build component
+        /// </summary>
+        [BuildComponentExport("Novacta LaTeX Component", 
+            IsVisible = true, 
+            Version = AssemblyInfo.ProductVersion,
+            Copyright = AssemblyInfo.Copyright, 
+            Description = AssemblyInfo.Description)]
+        public sealed class Factory : BuildComponentFactory
+        {
+            /// <summary>
+            /// Constructor.
+            /// </summary>
+            public Factory()
+            {
+                // Build placement tells tools such as the
+                // Sandcastle Help File Builder how to insert the
+                // component into build configurations in projects
+                // to which it is added.
+
+                // Set placement for reference builds 
+                this.ReferenceBuildPlacement = 
+                    new ComponentPlacement(
+                        PlacementAction.Before,
+                        "Transform Component");
+
+                // Set placement for conceptual builds
+                this.ConceptualBuildPlacement = 
+                    new ComponentPlacement(
+                        PlacementAction.Before,
+                        "Transform Component");
+            }
+
+            /// <inheritdoc />
+            public override BuildComponentCore Create()
+            {
+                return new LatexComponent(this.BuildAssembler);
+            }
+
+            /// <inheritdoc />
+            public override string DefaultConfiguration =>
+                @"<documentClass value=""article"" />" +
+                @"<imageFileFormat value=""svg"" />" +
+                @"<additionalPreambleCommands>" +
+                @"<line>" +
+                @"% Paste here your additional preamble commands" +
+                @"</line>" +
+                @"</additionalPreambleCommands>" +
+                @"<latexDefaultMode value=""display""/>" +
+                @"<imageDepthCorrection value=""0"" />" +
+                @"<imageScalePercentage value=""100"" />" +
+                @"<redirectFileProcessors value=""false"" />" +
+                @"<latexBinPath value="""" />" +
+                @"<helpType value=""{@HelpFileFormat}"" />" +
+                @"<basePath value=""{@WorkingFolder}"" />" +
+                @"<languagefilter value=""true"" />";
+        }
+
+        #endregion
+
         #region State
+
+        private readonly XElement defaultConfiguration =
+            new XElement("configuration",
+                new XElement("documentClass", new XAttribute("value", "article")),
+                new XElement("imageFileFormat", new XAttribute("value", "svg")),
+                new XElement("additionalPreambleCommands",
+                    new XElement("line", "% Paste here your additional preamble commands")),
+                new XElement("latexDefaultMode", new XAttribute("value", "display")),
+                new XElement("imageDepthCorrection", new XAttribute("value", "0")),
+                new XElement("imageScalePercentage", new XAttribute("value", "100")),
+                new XElement("redirectFileProcessors", new XAttribute("value", "false")),
+                new XElement("latexBinPath", new XAttribute("value", ""))
+            );
 
         /// <summary>
         /// Each LaTeX equation is represented as a LaTeX file.
@@ -36,8 +113,6 @@ namespace Novacta.Shfb.LatexTools
         private bool isFileFormatPng;
 
         private string initialTexDocument;
-
-        #region CONFIGURATION
 
         /// <summary>
         /// Gets or sets the additional preamble commands.
@@ -127,86 +202,6 @@ namespace Novacta.Shfb.LatexTools
         /// </remarks>
         /// <value>The working folder for file processors.</value>
         private string WorkingFolder;
-
-        #endregion
-
-        #endregion
-
-        #region Build component factory for MEF
-
-        /// <summary>
-        /// Provides a factory method to create <see cref="LatexComponent"/> instances.
-        /// </summary>
-        [BuildComponentExport(
-            id: "Novacta.Shfb.LatexComponent",
-            IsVisible = true,
-            Version = AssemblyInfo.ProductVersion,
-            Copyright = AssemblyInfo.Copyright,
-            Description = "Provides support for LaTeX formatted formulas in " +
-                "reference XML comments and conceptual content topics.")]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage(
-            "Design", 
-            "CA1034:Nested types should not be visible", 
-            Justification = "<Pending>")]
-        public sealed class Factory : BuildComponentFactory
-        {
-            /// <summary>
-            /// Initializes a new instance of the <see cref="Factory"/> class.
-            /// </summary>
-            public Factory()
-            {
-                this.ReferenceBuildPlacement = new ComponentPlacement(PlacementAction.Before,
-                    "XSL Transform Component");
-
-                this.ConceptualBuildPlacement = new ComponentPlacement(PlacementAction.Before,
-                    "XSL Transform Component");
-            }
-
-            /// <inheritdoc />
-            public override BuildComponentCore Create()
-            {
-                return new LatexComponent(this.BuildAssembler);
-            }
-
-            /// <inheritdoc />
-            public override string DefaultConfiguration =>
-                @"<documentClass value=""article"" />" +
-                @"<imageFileFormat value=""svg"" />" +
-                @"<additionalPreambleCommands>" +
-                @"<line>" +
-                @"% Paste here your additional preamble commands" +
-                @"</line>" +
-                @"</additionalPreambleCommands>" +
-                @"<latexDefaultMode value=""display""/>" +
-                @"<imageDepthCorrection value=""0"" />" +
-                @"<imageScalePercentage value=""100"" />" +
-                @"<redirectFileProcessors value=""false"" />" +
-                @"<dvisvgmBinPath value="""" />" +
-                @"<latexBinPath value="""" />" +
-                @"<helpType value=""{@HelpFileFormat}"" />" +
-                @"<basePath value=""{@WorkingFolder}"" />" +
-                @"<languagefilter value=""true"" />";
-        }
-
-        #endregion
-
-        #region Constructor
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="LatexComponent"/> class
-        /// with the specified build assembler.
-        /// </summary>
-        /// <param name="buildAssembler">
-        /// The build assembler.
-        /// </param>
-        protected LatexComponent(BuildAssemblerCore buildAssembler) :
-            base(buildAssembler)
-        {
-        }
-
-        #endregion
-
-        #region Apply helper methods
 
         #region LaTeX mode
 
@@ -322,294 +317,24 @@ namespace Novacta.Shfb.LatexTools
 
         #endregion
 
+        #endregion
+
+        #region Constructor
+
         /// <summary>
-        /// Performs the component tasks
-        /// using different settings for conceptual and reference topics.
+        /// Initializes a new instance of the <see cref="LatexComponent"/> class
+        /// with the specified build assembler.
         /// </summary>
-        /// <param name="document">The XML document under study.</param>
-        /// <param name="namePrefix">The prefix for LaTeX equation names.</param>
-        /// <param name="list">The list of latex nodes to be transformed.</param>
-        /// <param name="isTopicConceptual">if set to <c>true</c> the topic is conceptual; otherwise, <c>false</c>.</param>
-        private void Apply(XmlDocument document,// string key,
-            string namePrefix, XmlNodeList list, bool isTopicConceptual)
+        /// <param name="buildAssembler">
+        /// The build assembler.
+        /// </param>
+        protected LatexComponent(IBuildAssembler buildAssembler) : base(buildAssembler)
         {
-            if (list is null)
-            {
-                return;
-            }
-
-            string defaultConceptualNamespace = isTopicConceptual ?
-                "http://ddue.schemas.microsoft.com/authoring/2003/5" : null;
-            StringBuilder texBuilder = new StringBuilder();
-
-            foreach (XmlNode node in list)
-            {
-
-                #region MODE ATTRIBUTE
-
-                // LaTeX mode attribute defaults to a configuration option
-                string latexMode = this.LatexDefaultMode;
-                if (!(node.Attributes["mode"] is null))
-                {
-                    string mode = node.Attributes["mode"].InnerText;
-                    if (IsLaTeXModeSupported(mode))
-                    {
-                        latexMode = mode;
-                    }
-                    else
-                    {
-                        this.WriteMessage(MessageLevel.Warn, "Unrecognized LaTeX mode: \"" +
-                            mode + "\". Using default mode: \"" + latexMode + "\".");
-                    }
-                }
-
-                #endregion
-
-                string equationName = namePrefix + EquationId;
-
-                #region LATEX GENERATION
-
-                texBuilder.Clear();
-
-                string texFileName = equationName + ".tex";
-                string defaultLatexScale = "normalsize";
-                string latexNodeInnerText = node.InnerText.Replace("\\\\", "\\\\\\\\").Trim();
-
-                texBuilder.Append(this.initialTexDocument);
-
-                switch (latexMode)
-                {
-                    case "inline":
-                        texBuilder.AppendFormat(
-                            CultureInfo.InvariantCulture,
-                            "\\begin{{{0}}}${1}$\\end{{{2}}}\r\n",
-                            defaultLatexScale, latexNodeInnerText, defaultLatexScale);
-                        break;
-                    case "display":
-                        texBuilder.AppendFormat(
-                            CultureInfo.InvariantCulture,
-                            "\\begin{{{0}}}\\[{1}\\]\\end{{{2}}}\r\n",
-                            defaultLatexScale, latexNodeInnerText, defaultLatexScale);
-                        break;
-                }
-
-                texBuilder.Append("\\end{document}\r\n");
-
-                using (TextWriter stringWriter = new StreamWriter(
-                    this.WorkingFolder + Path.DirectorySeparatorChar + texFileName))
-                {
-                    stringWriter.Write(texBuilder.ToString());
-                }
-
-                #endregion
-
-                #region SCALE ATTRIBUTE
-
-                string pngResolution = null;
-                string svgZoomFactor = null;
-#pragma warning disable IDE0018 // Inline variable declaration
-                double scaleFactor;
-#pragma warning restore IDE0018 // Inline variable declaration
-
-                if (!(node.Attributes["scale"] is null))
-                {
-                    string scale = node.Attributes["scale"].InnerText;
-                    if (TryGetScaleFactor(scale, out scaleFactor))
-                    {
-                        pngResolution = Convert.ToString(
-                            Math.Ceiling(scaleFactor * BasePngResolution),
-                            CultureInfo.InvariantCulture);
-
-                        svgZoomFactor = Convert.ToString(
-                            scaleFactor * BaseSvgZoomFactor,
-                            CultureInfo.InvariantCulture);
-                    }
-                    else
-                    {
-                        this.WriteMessage(MessageLevel.Warn, "Unrecognized scale: \"" +
-                            scale + "\". Using default scale percentage: \"" + "100" + "\".");
-                    }
-                }
-
-                #endregion
-
-                #region DVI GENERATION
-
-                string latexOutput = this.Latex.Run(texFileName);
-                if (this.RedirectFileProcessors)
-                {
-                    this.WriteMessage(MessageLevel.Info, "Running LaTeX on " + texFileName + ".");
-                    this.WriteMessage(MessageLevel.Info, latexOutput);
-                }
-
-                #endregion
-
-                string outputFile, dviFileName = equationName + ".dvi";
-
-                #region PNG GENERATION
-
-                string dvipngOutput = this.DviPng.Run(equationName, pngResolution);
-                if (this.RedirectFileProcessors)
-                {
-                    this.WriteMessage(MessageLevel.Info, "Running DviPng on " + dviFileName + ".");
-                    this.WriteMessage(MessageLevel.Info, dvipngOutput);
-                }
-
-                string pngFileName = equationName + ".png";
-                string pngFilePath = this.WorkingFolder +
-                     Path.DirectorySeparatorChar + pngFileName;
-
-                if (this.isFileFormatPng)
-                {
-                    foreach (var outputFolder in this.OutputFolders)
-                    {
-                        outputFile = outputFolder + pngFileName;
-                        WriteMessage(MessageLevel.Info,
-                            string.Format(
-                                CultureInfo.InvariantCulture,
-                                "Copying {0} to {1}", pngFilePath, outputFile));
-
-                        File.Copy(pngFilePath, outputFile, true);
-                    }
-
-                }
-
-                #endregion
-
-                #region DEPTH ATTRIBUTE
-
-                int imageDepth = 0;
-
-                bool applyCorrectedDvipngDepth = true;
-
-                if (!(node.Attributes["depth"] is null))
-                {
-                    string depth = node.Attributes["depth"].InnerText;
-                    if (Int32.TryParse(depth, out imageDepth))
-                    {
-                        applyCorrectedDvipngDepth = false;
-                    }
-                    else
-                    {
-                        this.WriteMessage(MessageLevel.Warn, "Unrecognized depth: \"" +
-                            depth + "\". Using corrected DviPng depth.");
-                    }
-                }
-                if (applyCorrectedDvipngDepth)
-                {
-                    // Determine the DviPng image depth
-                    int firstDepthPosition = dvipngOutput.IndexOf(
-                        "depth=", StringComparison.OrdinalIgnoreCase) + 6;
-                    int lastDepthPosition = dvipngOutput.IndexOf(
-                        "]",
-                        firstDepthPosition, StringComparison.OrdinalIgnoreCase) - 1;
-                    int dvipngImageDepth = Convert.ToInt32(
-                        dvipngOutput.Substring(firstDepthPosition, 1 + lastDepthPosition - firstDepthPosition),
-                        CultureInfo.InvariantCulture);
-                    imageDepth = -this.ImageDepthCorrection + dvipngImageDepth;
-                }
-
-                #endregion
-
-                if (!this.isFileFormatPng)
-                {
-                    #region SVG GENERATION
-
-                    string dvisvgmOutput = this.DviSvgm.Run(equationName, svgZoomFactor);
-                    if (this.RedirectFileProcessors)
-                    {
-                        this.WriteMessage(MessageLevel.Info, "Running DviSvgm on " + dviFileName + ".");
-                        this.WriteMessage(MessageLevel.Info, dvisvgmOutput);
-                    }
-
-                    string svgFileName = equationName + ".svg";
-
-                    string svgFilePath = this.WorkingFolder +
-                        Path.DirectorySeparatorChar + svgFileName;
-
-                    foreach (var outputFolder in this.OutputFolders)
-                    {
-                        outputFile = outputFolder + svgFileName;
-                        WriteMessage(MessageLevel.Info,
-                            string.Format(
-                                CultureInfo.CurrentCulture,
-                                "Copying {0} to {1}", svgFilePath, outputFile));
-
-                        File.Copy(svgFilePath, outputFile, true);
-                    }
-
-                    #endregion
-                }
-
-                #region LATEX NODE EMISSION
-
-                bool isInlined = 0 == string.CompareOrdinal(latexMode, "inline");
-
-                XmlNode latex = document.CreateElement("latexImg");
-
-                XmlNode latexEquationName = document.CreateElement("name");
-                latexEquationName.InnerText = equationName;
-                latex.AppendChild(latexEquationName);
-
-                XmlNode latexImageFileFormat = document.CreateElement("format");
-                latexImageFileFormat.InnerText = this.ImageFileFormat;
-                latex.AppendChild(latexImageFileFormat);
-
-                XmlNode latexInlined = document.CreateElement("inline");
-                latexInlined.InnerText = isInlined ? "1" : "0";
-                latex.AppendChild(latexInlined);
-
-                XmlNode latexImageDepth = document.CreateElement("depth");
-                latexImageDepth.InnerText = Convert.ToString(
-                    imageDepth,
-                    CultureInfo.InvariantCulture);
-
-                latex.AppendChild(latexImageDepth);
-
-                this.WriteMessage(MessageLevel.Info,
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        "Node for LaTeX image {0}: \n {1}",
-                        equationName, latex.OuterXml));
-
-                if (!isInlined)
-                {
-                    if (isTopicConceptual)
-                    {
-                        XmlNode beforeMarkup = document.CreateElement("markup",
-                            defaultConceptualNamespace);
-                        beforeMarkup.AppendChild(document.CreateElement("br"));
-                        beforeMarkup.AppendChild(document.CreateElement("br"));
-
-                        node.ParentNode.InsertBefore(beforeMarkup, node);
-
-                        XmlNode afterMarkup = document.CreateElement("markup",
-                            defaultConceptualNamespace);
-                        afterMarkup.AppendChild(document.CreateElement("br"));
-                        afterMarkup.AppendChild(document.CreateElement("br"));
-
-                        node.ParentNode.InsertAfter(afterMarkup, node);
-                    }
-                    else
-                    {
-                        node.ParentNode.InsertBefore(document.CreateElement("br"), node);
-                        node.ParentNode.InsertBefore(document.CreateElement("br"), node);
-                        node.ParentNode.InsertAfter(document.CreateElement("br"), node);
-                        node.ParentNode.InsertAfter(document.CreateElement("br"), node);
-                    }
-                }
-                node.ParentNode.ReplaceChild(latex, node);
-
-                #endregion
-
-                EquationId++;
-            }
-
         }
 
         #endregion
 
-        #region BuildComponentCore implementation
+        #region Abstract method implementations
 
         /// <summary>
         /// Initializes the build component.
@@ -623,7 +348,7 @@ namespace Novacta.Shfb.LatexTools
             {
                 throw new ArgumentNullException(nameof(configuration));
             }
-
+            
             this.WriteMessage(MessageLevel.Info,
                 "[{0}, version {1}]\r\n    {2}",
                 "Novacta LaTeX Component",
@@ -641,15 +366,17 @@ namespace Novacta.Shfb.LatexTools
                 (additionalPreambleCommands is null)
                 ?
                     new string[1]
-                        { "% Paste here your additional preamble commands" }
+                        {
+                            this.defaultConfiguration
+                                .Element("additionalPreambleCommands")
+                                .Element("line").Value
+                        }
                 :
                 GetAdditionalPreambleCommands(
                     configuration.SelectSingleNode("//additionalPreambleCommands"));
 
             var texBuilder = new StringBuilder();
             texBuilder.Append("\\documentclass[10pt]{article}\r\n");
-            texBuilder.Append("\\usepackage{amsmath}\r\n");
-            texBuilder.Append("\\usepackage{amsfonts}\r\n");
             texBuilder.Append("\\usepackage[active,textmath,displaymath]{preview}\r\n");
             texBuilder.Append("\\pagestyle{empty}\r\n");
 
@@ -670,7 +397,9 @@ namespace Novacta.Shfb.LatexTools
             this.LatexDefaultMode =
                 (latexDefaultMode is null)
                 ?
-                "display"
+                    this.defaultConfiguration
+                        .Element("latexDefaultMode")
+                        .Attribute("value").Value
                 :
                 latexDefaultMode
                     .GetAttribute("value", String.Empty);
@@ -680,8 +409,16 @@ namespace Novacta.Shfb.LatexTools
             #region Image file format
 
             var imageFormatNode = configuration.SelectSingleNode("//imageFileFormat");
-            this.ImageFileFormat = imageFormatNode
-                .GetAttribute("value", String.Empty);
+
+            this.ImageFileFormat =
+                (imageFormatNode is null)
+                ?
+                    this.defaultConfiguration
+                        .Element("imageFileFormat")
+                        .Attribute("value").Value
+                :
+                    imageFormatNode
+                        .GetAttribute("value", String.Empty);
 
             this.isFileFormatPng =
                 (0 == String.CompareOrdinal(this.ImageFileFormat, "png"));
@@ -692,9 +429,17 @@ namespace Novacta.Shfb.LatexTools
 
             var imageDepthCorrectionNode = configuration.SelectSingleNode("//imageDepthCorrection");
 
-            this.ImageDepthCorrection = Convert.ToInt32(
-                imageDepthCorrectionNode.GetAttribute("value", String.Empty),
-                CultureInfo.InvariantCulture);
+            this.ImageDepthCorrection =
+                Convert.ToInt32(
+                    (imageDepthCorrectionNode is null)
+                    ?
+                        this.defaultConfiguration
+                            .Element("imageDepthCorrection")
+                            .Attribute("value").Value
+                    :
+                        imageDepthCorrectionNode
+                            .GetAttribute("value", String.Empty),
+                    CultureInfo.InvariantCulture);
 
             #endregion
 
@@ -702,9 +447,16 @@ namespace Novacta.Shfb.LatexTools
 
             var imageScalePercentageNode = configuration.SelectSingleNode("//imageScalePercentage");
 
-            this.ImageScalePercentage = Convert.ToDouble(
-                imageScalePercentageNode.GetAttribute("value", String.Empty),
-                CultureInfo.InvariantCulture);
+            this.ImageScalePercentage =
+                     Convert.ToDouble(
+                    (imageScalePercentageNode is null)
+                    ?
+                        this.defaultConfiguration
+                            .Element("imageScalePercentage")
+                            .Attribute("value").Value
+                    :
+                        imageScalePercentageNode.GetAttribute("value", String.Empty),
+                    CultureInfo.InvariantCulture);
 
             #endregion
 
@@ -715,8 +467,15 @@ namespace Novacta.Shfb.LatexTools
             var redirectFileProcessorsNode =
                 configuration.SelectSingleNode("//redirectFileProcessors");
 
-            this.RedirectFileProcessors = Convert.ToBoolean(
-                redirectFileProcessorsNode.GetAttribute("value", String.Empty),
+            this.RedirectFileProcessors =
+                 Convert.ToBoolean(
+                    (redirectFileProcessorsNode is null)
+                    ?
+                        this.defaultConfiguration
+                            .Element("redirectFileProcessors")
+                            .Attribute("value").Value
+                    :
+                        redirectFileProcessorsNode.GetAttribute("value", String.Empty),
                 CultureInfo.InvariantCulture);
 
             #endregion
@@ -746,7 +505,15 @@ namespace Novacta.Shfb.LatexTools
             // latexBinPath
 
             var latexBinPathNode = configuration.SelectSingleNode("//latexBinPath");
-            var latexBinFolder = latexBinPathNode.GetAttribute("value", String.Empty);
+
+            var latexBinFolder =
+                (latexBinPathNode is null)
+                ?
+                    this.defaultConfiguration
+                        .Element("latexBinPath")
+                        .Attribute("value").Value
+                :
+                    latexBinPathNode.GetAttribute("value", String.Empty);
 
             #endregion
 
@@ -770,9 +537,7 @@ namespace Novacta.Shfb.LatexTools
 
             // dvisvgmBinPath
 
-            var dvisvgmBinPathNode = configuration.SelectSingleNode("//dvisvgmBinPath");
-
-            var dvisvgmBinFolder = dvisvgmBinPathNode.GetAttribute("value", String.Empty);
+            var dvisvgmBinFolder = latexBinFolder;
 
             string defaultSvgZoomFactor = Convert.ToString(
                 BaseSvgZoomFactor,
@@ -819,6 +584,14 @@ namespace Novacta.Shfb.LatexTools
                 {
                     path = @"Output\MSHelpViewer\media\";
                 }
+                else if (type.Equals("OpenXml", StringComparison.OrdinalIgnoreCase))
+                {
+                    path = @"Output\OpenXml\media\";
+                }
+                else if (type.Equals("Markdown", StringComparison.OrdinalIgnoreCase))
+                {
+                    path = @"Output\Markdown\media\";
+                }
                 else
                 {
                     throw new InvalidOperationException(
@@ -827,6 +600,7 @@ namespace Novacta.Shfb.LatexTools
                             "Help file format {0} is not supported " +
                             "by the Novacta Latex Tools.", type));
                 }
+
                 outputFolders[i] = basePath + path;
             }
 
@@ -837,14 +611,6 @@ namespace Novacta.Shfb.LatexTools
             #endregion
 
             #region Component configuration messages
-
-            this.WriteMessage(MessageLevel.Info,
-                String.Format(
-                    CultureInfo.InvariantCulture,
-                    "{0}, version {1} - {2}.",
-                    "Novacta LaTeX Component",
-                    AssemblyInfo.ProductVersion,
-                    AssemblyInfo.Copyright));
 
             this.WriteMessage(MessageLevel.Info, "Additional preamble commands:");
             for (int i = 0; i < this.AdditionalPreambleCommands.Length; i++)
@@ -858,33 +624,41 @@ namespace Novacta.Shfb.LatexTools
                     CultureInfo.InvariantCulture,
                     "Documentation working folder: {0}",
                     basePath));
+
             this.WriteMessage(MessageLevel.Info,
                 string.Format(
                     CultureInfo.InvariantCulture,
                     "Component working folder: {0}",
                     workingFolder));
+
             this.WriteMessage(MessageLevel.Info,
                 "Default LaTex mode: " + this.LatexDefaultMode);
+
             this.WriteMessage(MessageLevel.Info,
                 "Image File Format: " + this.ImageFileFormat);
+
             this.WriteMessage(MessageLevel.Info,
                 string.Format(
                      CultureInfo.InvariantCulture,
                    "Image depth correction: {0}",
                     this.ImageDepthCorrection));
+
             this.WriteMessage(MessageLevel.Info,
                 string.Format(
                     CultureInfo.InvariantCulture,
                     "Image scale percentage: {0}",
                     this.ImageScalePercentage));
+
             this.WriteMessage(MessageLevel.Info,
                 "Redirect file processors: " +
                 this.RedirectFileProcessors.ToString());
+
             this.WriteMessage(MessageLevel.Info,
                 string.Format(
                     CultureInfo.InvariantCulture,
                     "LaTeX binary folder: {0}",
                     latexBinFolder));
+
             this.WriteMessage(MessageLevel.Info,
                 string.Format(
                     CultureInfo.InvariantCulture,
@@ -892,6 +666,297 @@ namespace Novacta.Shfb.LatexTools
                     dvisvgmBinFolder));
 
             #endregion
+        }
+
+        /// <summary>
+        /// Performs the component tasks
+        /// using different settings for conceptual and reference topics.
+        /// </summary>
+        /// <param name="document">
+        /// The XML document under study.
+        /// </param>
+        /// <param name="namePrefix">
+        /// The prefix for LaTeX equation names.
+        /// </param>
+        /// <param name="list">
+        /// The list of latex nodes to be transformed.
+        /// </param>
+        /// <param name="isTopicConceptual">
+        /// if set to <c>true</c> the topic is conceptual; otherwise, <c>false</c>.
+        /// </param>
+        private void Apply(XmlDocument document,// string key,
+            string namePrefix, XmlNodeList list, bool isTopicConceptual)
+        {
+            if (list is null)
+            {
+                return;
+            }
+
+            string defaultConceptualNamespace = isTopicConceptual ?
+                "http://ddue.schemas.microsoft.com/authoring/2003/5" : null;
+            StringBuilder texBuilder = new StringBuilder();
+
+            foreach (XmlNode node in list)
+            {
+
+                #region Mode attribute
+
+                // LaTeX mode attribute defaults to a configuration option
+                string latexMode = this.LatexDefaultMode;
+                if (!(node.Attributes["mode"] is null))
+                {
+                    string mode = node.Attributes["mode"].InnerText;
+                    if (IsLaTeXModeSupported(mode))
+                    {
+                        latexMode = mode;
+                    }
+                    else
+                    {
+                        this.WriteMessage(MessageLevel.Warn, "Unrecognized LaTeX mode: \"" +
+                            mode + "\". Using default mode: \"" + latexMode + "\".");
+                    }
+                }
+
+                #endregion
+
+                string equationName = namePrefix + EquationId;
+
+                #region Latex generation
+
+                texBuilder.Clear();
+
+                string texFileName = equationName + ".tex";
+                string defaultLatexScale = "normalsize";
+                string latexNodeInnerText = node.InnerText.Replace("\\\\", "\\\\\\\\").Trim();
+
+                texBuilder.Append(this.initialTexDocument);
+
+                switch (latexMode)
+                {
+                    case "inline":
+                        texBuilder.AppendFormat(
+                            CultureInfo.InvariantCulture,
+                            "\\begin{{{0}}}${1}$\\end{{{2}}}\r\n",
+                            defaultLatexScale, latexNodeInnerText, defaultLatexScale);
+                        break;
+                    case "display":
+                        texBuilder.AppendFormat(
+                            CultureInfo.InvariantCulture,
+                            "\\begin{{{0}}}\\[{1}\\]\\end{{{2}}}\r\n",
+                            defaultLatexScale, latexNodeInnerText, defaultLatexScale);
+                        break;
+                }
+
+                texBuilder.Append("\\end{document}\r\n");
+
+                using (StreamWriter stringWriter = new StreamWriter(
+                    this.WorkingFolder + Path.DirectorySeparatorChar + texFileName))
+                {
+                    stringWriter.Write(texBuilder.ToString());
+                }
+
+                #endregion
+
+                #region Scale attribute
+
+                string pngResolution = null;
+                string svgZoomFactor = null;
+#pragma warning disable IDE0018 // Inline variable declaration
+                double scaleFactor;
+#pragma warning restore IDE0018 // Inline variable declaration
+
+                if (!(node.Attributes["scale"] is null))
+                {
+                    string scale = node.Attributes["scale"].InnerText;
+                    if (TryGetScaleFactor(scale, out scaleFactor))
+                    {
+                        pngResolution = Convert.ToString(
+                            Math.Ceiling(scaleFactor * BasePngResolution),
+                            CultureInfo.InvariantCulture);
+
+                        svgZoomFactor = Convert.ToString(
+                            scaleFactor * BaseSvgZoomFactor,
+                            CultureInfo.InvariantCulture);
+                    }
+                    else
+                    {
+                        this.WriteMessage(MessageLevel.Warn, "Unrecognized scale: \"" +
+                            scale + "\". Using default scale percentage: \"" + "100" + "\".");
+                    }
+                }
+
+                #endregion
+
+                #region Dvi generation
+
+                string latexOutput = this.Latex.Run(texFileName);
+                if (this.RedirectFileProcessors)
+                {
+                    this.WriteMessage(MessageLevel.Info, "Running LaTeX on " + texFileName + ".");
+                    this.WriteMessage(MessageLevel.Info, latexOutput);
+                }
+
+                #endregion
+
+                string outputFile, dviFileName = equationName + ".dvi";
+
+                #region Png generation
+
+                string dvipngOutput = this.DviPng.Run(equationName, pngResolution);
+                if (this.RedirectFileProcessors)
+                {
+                    this.WriteMessage(MessageLevel.Info, "Running DviPng on " + dviFileName + ".");
+                    this.WriteMessage(MessageLevel.Info, dvipngOutput);
+                }
+
+                string pngFileName = equationName + ".png";
+                string pngFilePath = this.WorkingFolder +
+                     Path.DirectorySeparatorChar + pngFileName;
+
+                if (this.isFileFormatPng)
+                {
+                    foreach (var outputFolder in this.OutputFolders)
+                    {
+                        outputFile = outputFolder + pngFileName;
+                        WriteMessage(MessageLevel.Info,
+                            string.Format(
+                                CultureInfo.InvariantCulture,
+                                "Copying {0} to {1}", pngFilePath, outputFile));
+
+                        File.Copy(pngFilePath, outputFile, true);
+                    }
+
+                }
+
+                #endregion
+
+                #region Depth attribute
+
+                int imageDepth = 0;
+
+                bool applyCorrectedDvipngDepth = true;
+
+                if (!(node.Attributes["depth"] is null))
+                {
+                    string depth = node.Attributes["depth"].InnerText;
+                    if (Int32.TryParse(depth, out imageDepth))
+                    {
+                        applyCorrectedDvipngDepth = false;
+                    }
+                    else
+                    {
+                        this.WriteMessage(MessageLevel.Warn, "Unrecognized depth: \"" +
+                            depth + "\". Using corrected DviPng depth.");
+                    }
+                }
+                if (applyCorrectedDvipngDepth)
+                {
+                    // Determine the DviPng image depth
+                    int firstDepthPosition = dvipngOutput.IndexOf(
+                        "depth=", StringComparison.OrdinalIgnoreCase) + 6;
+                    int lastDepthPosition = dvipngOutput.IndexOf(
+                        "]",
+                        firstDepthPosition, StringComparison.OrdinalIgnoreCase) - 1;
+                    int dvipngImageDepth = Convert.ToInt32(
+                        dvipngOutput.Substring(firstDepthPosition, 1 + lastDepthPosition - firstDepthPosition),
+                        CultureInfo.InvariantCulture);
+                    imageDepth = -this.ImageDepthCorrection + dvipngImageDepth;
+                }
+
+                #endregion
+
+                if (!this.isFileFormatPng)
+                {
+                    #region Svg generation
+
+                    string dvisvgmOutput = this.DviSvgm.Run(equationName, svgZoomFactor);
+                    if (this.RedirectFileProcessors)
+                    {
+                        this.WriteMessage(MessageLevel.Info, "Running DviSvgm on " + dviFileName + ".");
+                        this.WriteMessage(MessageLevel.Info, dvisvgmOutput);
+                    }
+
+                    string svgFileName = equationName + ".svg";
+
+                    string svgFilePath = this.WorkingFolder +
+                        Path.DirectorySeparatorChar + svgFileName;
+
+                    foreach (var outputFolder in this.OutputFolders)
+                    {
+                        outputFile = outputFolder + svgFileName;
+                        WriteMessage(MessageLevel.Info,
+                            string.Format(
+                                CultureInfo.CurrentCulture,
+                                "Copying {0} to {1}", svgFilePath, outputFile));
+
+                        File.Copy(svgFilePath, outputFile, true);
+                    }
+
+                    #endregion
+                }
+
+                #region Latex node emission
+
+                var latex = document.CreateElement("latexImg");
+
+                XmlAttribute nameAttribute = document.CreateAttribute("name");
+                nameAttribute.Value = equationName;
+                latex.SetAttributeNode(nameAttribute);
+
+                XmlAttribute formatAttribute = document.CreateAttribute("format");
+                formatAttribute.Value = this.ImageFileFormat;
+                latex.SetAttributeNode(formatAttribute);
+
+                bool isInlined = 0 == string.CompareOrdinal(latexMode, "inline");
+
+                if (isInlined)
+                {
+                    XmlAttribute depthAttribute = document.CreateAttribute("depth");
+                    depthAttribute.Value =
+                        Convert.ToString(
+                            imageDepth,
+                            CultureInfo.InvariantCulture);
+                    latex.SetAttributeNode(depthAttribute);
+                }
+
+                this.WriteMessage(MessageLevel.Info,
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        "Node for LaTeX image {0}: \n {1}",
+                        equationName, latex.OuterXml));
+
+                if (!isInlined)
+                {
+                    if (isTopicConceptual)
+                    {
+                        XmlElement beforeMarkup = document.CreateElement("markup",
+                            defaultConceptualNamespace);
+                        beforeMarkup.AppendChild(document.CreateElement("br"));
+                        beforeMarkup.AppendChild(document.CreateElement("br"));
+
+                        node.ParentNode.InsertBefore(beforeMarkup, node);
+
+                        XmlElement afterMarkup = document.CreateElement("markup",
+                            defaultConceptualNamespace);
+                        afterMarkup.AppendChild(document.CreateElement("br"));
+                        afterMarkup.AppendChild(document.CreateElement("br"));
+
+                        node.ParentNode.InsertAfter(afterMarkup, node);
+                    }
+                    else
+                    {
+                        node.ParentNode.InsertBefore(document.CreateElement("br"), node);
+                        node.ParentNode.InsertBefore(document.CreateElement("br"), node);
+                        node.ParentNode.InsertAfter(document.CreateElement("br"), node);
+                        node.ParentNode.InsertAfter(document.CreateElement("br"), node);
+                    }
+                }
+                node.ParentNode.ReplaceChild(latex, node);
+
+                #endregion
+
+                EquationId++;
+            }
         }
 
         /// <summary>

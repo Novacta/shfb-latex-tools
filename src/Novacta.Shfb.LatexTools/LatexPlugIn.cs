@@ -2,29 +2,27 @@
 // Licensed under the MIT license. 
 // See the LICENSE file in the project root for more information.
 
+using Sandcastle.Core;
 using SandcastleBuilder.Utils.BuildComponent;
 using SandcastleBuilder.Utils.BuildEngine;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
-
+using System.Xml.XPath;
 
 namespace Novacta.Shfb.LatexTools
 {
     /// <summary>
-    /// Provides support in MS Help Viewer files for LaTeX content 
-    /// represented via the SVG image format.
+    /// Provides support for LaTeX formatted formulas in 
+    /// reference XML comments and conceptual content topics.
     /// </summary>
-    [HelpFileBuilderPlugInExport(
-        id: "Novacta.Shfb.LatexPlugIn",
+    [HelpFileBuilderPlugInExport(id: "Novacta LaTeX PlugIn",
         Version = AssemblyInfo.ProductVersion,
         Copyright = AssemblyInfo.Copyright,
-        Description = "Provides support in MS Help Viewer files for LaTeX content " +
-            "represented via the SVG image format.")]
+        Description = AssemblyInfo.Description)]
     public sealed class LatexPlugIn : IPlugIn
     {
         #region State
@@ -45,13 +43,18 @@ namespace Novacta.Shfb.LatexTools
         {
             get
             {
-                if (this.executionPoints == null)
-                    this.executionPoints = new List<ExecutionPoint>
+                if (executionPoints == null)
+                    executionPoints = new List<ExecutionPoint>
                     {
-                        new ExecutionPoint(BuildStep.CompilingHelpFile, ExecutionBehaviors.Before),
+                        new ExecutionPoint(
+                            BuildStep.CreateBuildAssemblerConfigs,
+                            ExecutionBehaviors.Before),
+                        new ExecutionPoint(
+                            BuildStep.CompilingHelpFile,
+                            ExecutionBehaviors.Before)
                     };
 
-                return this.executionPoints;
+                return executionPoints;
             }
         }
 
@@ -63,17 +66,22 @@ namespace Novacta.Shfb.LatexTools
         /// </param>
         /// <param name="configuration">
         /// The configuration data that the plug-in should use to initialize itself.
-        /// </param>
+        /// </param>        
         public void Initialize(BuildProcess buildProcess, XElement configuration)
         {
-            builder = buildProcess;
+            if (configuration is null)
+            {
+                throw new ArgumentNullException(nameof(configuration));
+            }
+
+            this.builder = buildProcess;
 
             var metadata = (HelpFileBuilderPlugInExportAttribute)this.GetType()
                 .GetCustomAttributes(
                     typeof(HelpFileBuilderPlugInExportAttribute), false)
                 .First();
 
-            builder.ReportProgress("{0} Version {1}\r\n{2}",
+            this.builder.ReportProgress("{0} Version {1}\r\n{2}",
                 metadata.Id,
                 metadata.Version,
                 metadata.Copyright);
@@ -87,19 +95,47 @@ namespace Novacta.Shfb.LatexTools
         /// </param>
         public void Execute(ExecutionContext context)
         {
-            if (this.builder.CurrentFormat == Sandcastle.Core.HelpFileFormats.MSHelpViewer)
+            switch (context.BuildStep)
             {
-                this.TransformLaTeXEmbedTags();
+                case BuildStep.CreateBuildAssemblerConfigs:
+                    {
+                        this.builder.ReportProgress(
+                            "Novacta.Shfb.LatexPlugIn: added latexImg element transformation.");
+
+                        var transformation =
+                            this.builder.PresentationStyle.TopicTransformation;
+
+                        transformation.AddElement(new LatexImgElement());
+                    }
+                    break;
+                case BuildStep.CompilingHelpFile:
+                    {
+                        if (this.builder.CurrentFormat == HelpFileFormats.MSHelpViewer)
+                        {
+                            this.builder.ReportProgress(
+                                "Novacta.Shfb.LatexPlugIn: " +
+                                "transforming MS Help Viewer files to represent " +
+                                "LaTeX equations using a supported image file format.");
+                            this.TransformLatexEquationRepresentations();
+                        }
+                    }
+                    break;
+                default:
+                    break;
             }
         }
 
         /// <summary>
         /// Transforms LaTeX img tags into embed tags.
         /// </summary>
-        private void TransformLaTeXEmbedTags()
+        private void TransformLatexEquationRepresentations()
         {
+            string imgSrcValueFormat =
+                @"ms-xhelp:///?method=asset&id=media\{0}.{1}&package={2}.mshc&topiclocale={3}";
+
             string basePath = this.builder.WorkingFolder + @"\Output\MSHelpViewer\html\";
-            bool isFirstFile = true;
+            bool isFirstLatexNode = true;
+            bool isSvgSelected = true;
 
             foreach (string sourceFile in Directory.EnumerateFiles(basePath))
             {
@@ -111,60 +147,82 @@ namespace Novacta.Shfb.LatexTools
                 XmlNamespaceManager nsmgr = new XmlNamespaceManager(document.NameTable);
                 nsmgr.AddNamespace("ns", "http://www.w3.org/1999/xhtml");
 
-                XmlNodeList list = root.SelectNodes("//ns:img[@alt='LaTeX equation']", nsmgr);
+                XmlNodeList latexImglist = root.SelectNodes("//ns:img[@alt='LaTeX equation']", nsmgr);
 
-                if (list.Count > 0)
+                if (latexImglist.Count > 0)
                 {
-                    foreach (XmlNode img in list)
+                    foreach (XmlNode img in latexImglist)
                     {
-                        XmlNode embed = document.CreateElement("embed");
-
-                        XmlAttribute alt = document.CreateAttribute("alt");
-                        alt.Value = "LaTeX equation";
-                        embed.Attributes.Append(alt);
-
-                        XmlAttribute type = document.CreateAttribute("type");
-                        type.Value = "image/svg+xml";
-                        embed.Attributes.Append(type);
-
-                        XmlAttribute src = document.CreateAttribute("src");
-                        string imgSource = img.Attributes.GetNamedItem("src").Value;
+                        XmlAttribute imgSrc = img.Attributes["src"];
+                        string imgSrcValue = imgSrc.Value;
                         string fileName, fileExtension;
-                        int slashPosition = imgSource.IndexOf("/", StringComparison.OrdinalIgnoreCase);
-                        int dotPosition = imgSource.LastIndexOf('.');
-                        fileName = imgSource.Substring(slashPosition + 1, dotPosition - slashPosition - 1);
-                        fileExtension = imgSource.Substring(dotPosition + 1, imgSource.Length - dotPosition - 1);
+                        int slashPosition = imgSrcValue.LastIndexOf("/");
+                        int dotPosition = imgSrcValue.LastIndexOf('.');
 
-                        XmlNode imgStyle = img.Attributes.GetNamedItem("style");
-                        if (!(imgStyle is null))
+                        fileName = imgSrcValue.Substring(
+                            startIndex: slashPosition + 1,
+                            length: dotPosition - slashPosition - 1);
+
+                        fileExtension = imgSrcValue.Substring(
+                            startIndex: dotPosition + 1,
+                            length: imgSrcValue.Length - dotPosition - 1);
+
+                        if (isFirstLatexNode)
                         {
-                            XmlAttribute style = document.CreateAttribute("style");
-                            style.Value = imgStyle.Value;
-                            embed.Attributes.Append(style);
+                            isSvgSelected =
+                                string.CompareOrdinal(fileExtension, "svg") == 0;
+
+                            isFirstLatexNode = false;
                         }
 
-                        if (isFirstFile)
+                        switch (isSvgSelected)
                         {
-                            if (string.CompareOrdinal(fileExtension, "svg") != 0)
-                            {
-                                // LaTeX equations are represented using a graphic format 
-                                // other than SVG
-                                return;
-                            }
-                            isFirstFile = false;
+                            case false:
+                                {
+                                    imgSrc.Value = string.Format(
+                                        imgSrcValueFormat,
+                                        fileName,
+                                        fileExtension,
+                                        this.builder.ResolvedHtmlHelpName,
+                                        this.builder.CurrentProject.Language.Name);
+                                }
+                                break;
+                            case true:
+                                {
+                                    XmlNode embed = document.CreateElement("embed");
+
+                                    XmlAttribute alt = document.CreateAttribute("alt");
+                                    alt.Value = "LaTeX equation";
+                                    embed.Attributes.Append(alt);
+
+                                    XmlAttribute type = document.CreateAttribute("type");
+                                    type.Value = "image/svg+xml";
+                                    embed.Attributes.Append(type);
+
+                                    XmlAttribute src = document.CreateAttribute("src");
+
+                                    XmlNode imgStyle = img.Attributes.GetNamedItem("style");
+
+                                    if (!(imgStyle is null))
+                                    {
+                                        XmlAttribute style = document.CreateAttribute("style");
+                                        style.Value = imgStyle.Value;
+                                        embed.Attributes.Append(style);
+                                    }
+
+                                    src.Value = string.Format(
+                                        imgSrcValueFormat,
+                                        fileName,
+                                        fileExtension,
+                                        this.builder.ResolvedHtmlHelpName,
+                                        this.builder.CurrentProject.Language.Name);
+
+                                    embed.Attributes.Append(src);
+
+                                    img.ParentNode.ReplaceChild(embed, img);
+                                }
+                                break;
                         }
-
-                        src.Value = string.Format(
-                            CultureInfo.InvariantCulture,
-                            @"ms-xhelp:///?method=asset&id=media\{0}.{1}&package={2}.mshc&topiclocale={3}",
-                            fileName,
-                            "svg",
-                            this.builder.ResolvedHtmlHelpName,
-                            this.builder.CurrentProject.Language.Name);
-
-                        embed.Attributes.Append(src);
-
-                        img.ParentNode.ReplaceChild(embed, img);
                     }
 
                     document.Save(sourceFile);

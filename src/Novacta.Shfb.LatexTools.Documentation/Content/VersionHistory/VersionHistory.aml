@@ -1,33 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<topic id="7abd97df-f098-4afa-9f9c-2255d3e61a33" revisionNumber="1">
-  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <introduction>
-      <para>
-        The topics in this section describe the various changes made to
-        <legacyBold>Novacta.Shfb.LatexTools</legacyBold> over the
-        life of the project.
-      </para>
-    </introduction>
+<topic id="4fd26de9-a6e5-4740-a82e-75d9041a8e5d" revisionNumber="1">
+	<developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+		<introduction>
+			<para>The topics in this section describe the various changes made to the 
+			<legacyBold>Novacta.Shfb.LatexTools</legacyBold> over the life of the project.
+		</para>
+		</introduction>
 
-    <section>
-      <title>Version History</title>
-      <content>
-        <para>Select a version below to see a description of its changes.</para>
+		<section>
+			<title>Version History</title>
+			<content>
+				<para>Select a version below to see a description of its changes.</para>
 
-        <list class="bullet">
-          <listItem>
-            <para>
-              <link xlink:href="cf22a47c-7bfd-4e16-a103-b99e83335270" />
-            </para>
-          </listItem>
-        </list>
+				<list class="bullet">
+					<listItem>
+						<para><link xlink:href="5f1a64fb-4ea5-4a81-80eb-51c422544e28" /></para>
+					</listItem>
 
-      </content>
-    </section>
+					<listItem>
+						<para>
+							<link xlink:href="1eb1b9dc-881d-445a-bca7-cc9f74f2ff3d" />
+						</para>
+					</listItem>
 
-    <relatedTopics>
-      <link xlink:href="fe868fbe-1bfd-47f7-bf24-e1fd586864c6" />
-    </relatedTopics>
+				</list>
 
-  </developerConceptualDocument>
+			</content>
+		</section>
+
+		<relatedTopics>
+			<link xlink:href="5329bde0-92e2-4707-ad56-64caa353b849" />
+		</relatedTopics>
+
+	</developerConceptualDocument>
 </topic>

@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "Novacta.Shfb.Latex": {
+    "Novacta.Shfb.LatexTools": {
       "commandName": "Executable",
       "executablePath": "$(SHFBROOT)\\Tools\\SandcastleBuilderGUI.exe"
     }

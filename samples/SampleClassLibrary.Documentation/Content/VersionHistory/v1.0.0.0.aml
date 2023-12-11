@@ -1,9 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<topic id="a6fc421b-f7f2-4b02-a2e2-d703be7ebaa4" revisionNumber="1">
+<topic id="2c501263-1f40-4015-a446-9d14049fae10" revisionNumber="1">
 	<developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
 		<introduction>
-			<para>Version 1.0.0.
-			</para>
 		</introduction>
 
 		<section>
@@ -21,7 +19,7 @@
 		</section>
 
 		<relatedTopics>
-			<link xlink:href="c711650b-cb39-4fce-8938-885a71d52e6f" />
+			<link xlink:href="251c661a-8a0a-449b-92fa-0ee906ee4773" />
 		</relatedTopics>
 
 	</developerConceptualDocument>

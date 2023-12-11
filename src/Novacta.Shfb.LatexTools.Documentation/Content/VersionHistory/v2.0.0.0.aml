@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="1eb1b9dc-881d-445a-bca7-cc9f74f2ff3d" revisionNumber="1">
+  <developerConceptualDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <!--
+    <summary>
+      <para>Optional summary abstract</para>
+    </summary>
+    -->
+
+	  <introduction>
+		  <para>
+			  Version 2.0.0 was released on December 11 2023.
+		  </para>
+	  </introduction>
+
+	  <section>
+		  <title>Changes in This Release</title>
+		  <content>
+
+			  <list class="bullet">
+				  <listItem>
+					  <para>
+						  Added support for
+						  <externalLink>
+							  <linkText>SHFB</linkText>
+							  <linkUri>https://github.com/EWSoftware/SHFB</linkUri>
+						  </externalLink>
+						  version 2022.8.14.0 or later.
+					  </para>
+				  </listItem>
+				  <listItem>
+					  <para>
+						  Added support for the following
+						  <externalLink>
+							  <linkText>SHFB</linkText>
+							  <linkUri>https://github.com/EWSoftware/SHFB</linkUri>
+						  </externalLink>
+						  presentation styles: 
+						  <literal>Default 2022</literal>,
+						  <literal>Markdown Content</literal>,
+						  <literal>Open XML Document</literal>, and
+						  <literal>VS2013</literal>. 
+					  </para>
+				  </listItem>			  
+				  <listItem>
+					  <para>
+						  <legacyBold>(Breaking)</legacyBold>
+						  Customized VS2010 and VS2013 presentation styles 
+						  are no longer supported.
+					  </para>
+				  </listItem>
+			  </list>
+
+		  </content>
+	  </section>
+
+	  <relatedTopics>
+		  <link xlink:href="4fd26de9-a6e5-4740-a82e-75d9041a8e5d" />
+	  </relatedTopics>
+	  
+  </developerConceptualDocument>
+</topic>

@@ -3,12 +3,14 @@
   <!-- Import the common properties to support NuGet restore -->
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
+    <!-- A target framework version is required by Visual Studio.  It can be any version with a targeting pack installed. -->
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <!-- The configuration and platform will be used to determine which assemblies to include from solution and
 				 project documentation sources -->
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>93c88c34-9353-4835-a89c-256d08eb0427</ProjectGuid>
+    <ProjectGuid>b634c899-f76c-4654-872c-8062f6d2c7e7</ProjectGuid>
     <SHFBSchemaVersion>2017.9.26.0</SHFBSchemaVersion>
     <!-- AssemblyName, Name, and RootNamespace are not used by SHFB but Visual Studio adds them anyway -->
     <AssemblyName>SampleClassLibrary.Documentation</AssemblyName>
@@ -28,60 +30,59 @@
       <Argument Key="logoAlignment" Value="left" xmlns="" />
       <Argument Key="maxVersionParts" Value="" xmlns="" />
     </TransformComponentArguments>
+    <DocumentationSources>
+      <DocumentationSource sourceFile="..\SampleClassLibrary\SampleClassLibrary.csproj" />
+    </DocumentationSources>
     <HelpFileFormat>Website</HelpFileFormat>
-    <SyntaxFilters>C#</SyntaxFilters>
-    <PresentationStyle>Novacta.Shfb.LatexTools.VS2013</PresentationStyle>
+    <SyntaxFilters>Standard</SyntaxFilters>
+    <PresentationStyle>Default2022</PresentationStyle>
     <CleanIntermediates>True</CleanIntermediates>
     <KeepLogFile>True</KeepLogFile>
     <DisableCodeBlockComponent>False</DisableCodeBlockComponent>
     <IndentHtml>False</IndentHtml>
-    <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
+    <BuildAssemblerVerbosity>AllMessages</BuildAssemblerVerbosity>
     <SaveComponentCacheCapacity>100</SaveComponentCacheCapacity>
+    <NamespaceSummaries>
+      <NamespaceSummaryItem name="SampleClassLibrary" isDocumented="True" xmlns="">This namespace contains core types.</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="SampleClassLibrary.Advanced" isDocumented="True" xmlns="">This namespace contains advanced types.</NamespaceSummaryItem>
+    </NamespaceSummaries>
     <HelpTitle>A Sandcastle Documented Class Library</HelpTitle>
     <HelpFileVersion>1.0.0.0</HelpFileVersion>
     <NamingMethod>MemberName</NamingMethod>
     <ContentPlacement>AboveNamespaces</ContentPlacement>
-    <RootNamespaceContainer>False</RootNamespaceContainer>
+    <RootNamespaceContainer>True</RootNamespaceContainer>
     <NamespaceGrouping>True</NamespaceGrouping>
     <MaximumGroupParts>2</MaximumGroupParts>
     <Preliminary>False</Preliminary>
     <SdkLinkTarget>Blank</SdkLinkTarget>
-    <ComponentPath>
-    </ComponentPath>
+    <RootNamespaceTitle>Namespaces</RootNamespaceTitle>
     <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
-    <ComponentConfigurations>
-      <ComponentConfig id="Novacta.Shfb.LatexComponent" enabled="True">
-        <component id="Novacta.Shfb.LatexComponent">
-  <documentClass value="article" />
-  <imageFileFormat value="svg" />
-  <additionalPreambleCommands>
-    <line>% Paste here your additional preamble commands</line>
-  </additionalPreambleCommands>
-  <latexDefaultMode value="inline" />
-  <imageDepthCorrection value="0" />
-  <imageScalePercentage value="100" />
-  <redirectFileProcessors value="false" />
-  <dvisvgmBinPath value="C:\dvisvgmbinfolder" />
-  <latexBinPath value="C:\latexbinfolder" />
-  <helpType value="{@HelpFileFormat}" />
-  <basePath value="{@WorkingFolder}" />
-  <languagefilter value="true" />
-</component>
-      </ComponentConfig>
-    </ComponentConfigurations>
-    <DocumentationSources>
-      <DocumentationSource sourceFile="..\SampleClassLibrary\SampleClassLibrary.csproj" xmlns="" />
-    </DocumentationSources>
-    <NamespaceSummaries>
-      <NamespaceSummaryItem name="SampleClassLibrary" isDocumented="True">Provides support for operations on integers.</NamespaceSummaryItem>
-      <NamespaceSummaryItem name="SampleClassLibrary.Advanced" isDocumented="True">Provides support for operations on integer arrays.</NamespaceSummaryItem>
-      <NamespaceSummaryItem name="SampleClassLibrary (Group)" isGroup="True" isDocumented="True">SampleClassLibrary Namespaces</NamespaceSummaryItem>
-    </NamespaceSummaries>
     <PlugInConfigurations>
-      <PlugInConfig id="Novacta.Shfb.LatexPlugIn" enabled="True">
+      <PlugInConfig id="Novacta LaTeX PlugIn" enabled="True">
         <configuration />
       </PlugInConfig>
     </PlugInConfigurations>
+    <ComponentConfigurations>
+      <ComponentConfig id="Novacta LaTeX Component" enabled="True">
+        <component id="Novacta LaTeX Component">
+          <documentClass value="article" />
+          <imageFileFormat value="svg" />
+          <additionalPreambleCommands>
+            <line>% Paste here your additional preamble commands
+</line>
+          </additionalPreambleCommands>
+          <latexDefaultMode value="display" />
+          <imageDepthCorrection value="0" />
+          <imageScalePercentage value="100" />
+          <redirectFileProcessors value="True" />
+          <latexBinPath value="" />
+          <helpType value="{@HelpFileFormat}" />
+          <basePath value="{@WorkingFolder}" />
+          <languagefilter value="true" />
+        </component>
+      </ComponentConfig>
+    </ComponentConfigurations>
+    <ComponentPath>.\</ComponentPath>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
 			 the build.  The others are optional common platform types that may appear. -->
@@ -108,29 +109,18 @@
     <Folder Include="media" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Content\OperatingOnIntegerArrays.aml" />
-    <None Include="Content\OperatingOnIntegers.aml" />
     <None Include="Content\VersionHistory\v1.0.0.0.aml" />
     <None Include="Content\VersionHistory\VersionHistory.aml" />
     <None Include="Content\Welcome.aml" />
+    <None Include="Content\OperatingOnIntegerArrays.aml" />
+    <None Include="Content\OperatingOnIntegers.aml" />
   </ItemGroup>
   <ItemGroup>
     <ContentLayout Include="ContentLayout.content" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="icons\Help.png" />
-    <None Include="README.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="media\Function.png">
-      <ImageId>Function</ImageId>
-      <AlternateText>Function</AlternateText>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Novacta.Shfb.LatexTools">
-      <Version>1.0.0</Version>
-    </PackageReference>
+    <Content Include="README.txt" />
   </ItemGroup>
   <!-- Import the common build targets during NuGet restore because before the packages are being installed, $(SHFBROOT) is not set yet -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="'$(MSBuildRestoreSessionId)' != ''" />

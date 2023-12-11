@@ -1,0 +1,905 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="bd3da6fb-e8fb-4edc-96da-f5314a38b16f" revisionNumber="1">
+  <developerConceptualDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:ltx="http://www.novacta.net/2018/XSL/ShfbLatexTools">
+
+	  <introduction>
+	  </introduction>
+
+	  <section address="sectionInstallLatexTools">
+		  <title>Installing the LatexTools</title>
+		  <content>
+
+			  <para>
+				  <legacyBold>Install a supported version of SHFB</legacyBold>
+			  </para>
+			  <para></para>
+			  <para>
+				  Version 1.0.0 of the
+				  <legacyBold>LatexTools</legacyBold>
+				  targets SHFB, versions 2021.10.23.0 to 2022.2.6.0.
+			  </para>
+			  <para>
+				  Make sure that a supported SHFB version of your choice
+				  is currently installed on your host machine.
+			  </para>
+			  <para>
+				  You can download the required SHFB release
+				  <externalLink>
+					  <linkText>
+						  here
+					  </linkText>
+					  <linkUri>https://github.com/EWSoftware/SHFB/releases</linkUri>
+				  </externalLink>.
+				  Notice that version 1.0.0 requires packages
+				  <externalLink>
+					  <linkText>amsmath</linkText>
+					  <linkUri>https://ctan.org/pkg/amsmath</linkUri>
+				  </externalLink>,
+				  <externalLink>
+					  <linkText>amsfonts</linkText>
+					  <linkUri>https://ctan.org/pkg/amsfonts</linkUri>
+				  </externalLink>, and
+				  <externalLink>
+					  <linkText>preview</linkText>
+					  <linkUri>https://ctan.org/pkg/preview</linkUri>
+				  </externalLink>.
+			  </para>
+			  
+			  <para></para>
+			  <para>
+				  <legacyBold>Install a full LaTeX distribution</legacyBold>
+			  </para>
+			  <para></para>
+			  <para>
+				  You need a full TeX distribution installed on your host machine.
+				  
+				  You can find a list of TeX implementations
+				  <externalLink>
+					  <linkText>here</linkText>
+					  <linkUri>https://www.latex-project.org/get/#tex-distributions</linkUri>
+				  </externalLink>.
+			  </para>
+
+			  <para></para>
+			  <para>
+				  <legacyBold>Create a SHFB documentation project</legacyBold>
+			  </para>
+			  <para>
+				  Documentation projects can be created via the
+				  <externalLink>
+					  <linkText>SHFB standalone GUI</linkText>
+					  <linkUri>http://ewsoftware.github.io/SHFB/html/d5dbf017-25f1-48cb-86db-90f76ee8f4d7.htm</linkUri>
+				  </externalLink>,
+				  or via the
+				  <externalLink>
+					  <linkText>SHFB Visual Studio package</linkText>
+					  <linkUri>http://ewsoftware.github.io/SHFB/html/78507051-0fc0-479b-9d47-78a10398eaf2.htm#NewProject/</linkUri>
+				  </externalLink>.
+			  </para>
+			  <para></para>
+			  <para>
+				  <legacyBold>Add the Latex Tools to the SHFB documentation project</legacyBold>
+			  </para>
+			  <para></para>
+			  <para>
+				  Right click on node <legacyBold>Component Packages</legacyBold> of your project
+				  and, from the contextual menu, select <legacyBold>Manage Component Packages...</legacyBold>
+				  (if your are using the SHFB standalone GUI), or
+				  <legacyBold>Manage NuGet Packages...</legacyBold> (if you are
+				  inside Visual Studio). Hence search package
+				  <legacyBold>Novacta.Shfb.LatexTools</legacyBold> and install it.
+			  </para>
+			  <para>
+				  This way, a reference to
+				  the Novacta.Shfb.LatexTools
+				  <externalLink>
+					  <linkText>NuGet package</linkText>
+					  <linkUri>https://www.nuget.org/packages/Novacta.Shfb.LatexTools</linkUri>
+				  </externalLink> will be added to your documentation project, and the following
+				  SHFB extensions will be available while processing help files.
+			  </para>
+			  <list class="bullet">
+				  <listItem>
+					  <para>
+						  The <legacyBold>Novacta.Shfb.LatexComponent</legacyBold>
+						  enables the representation of LaTeX equations
+						  as images in SHFB documentation topics.
+						  Supported image formats are
+						  <externalLink>
+							  <linkText>
+								  PNG
+							  </linkText>
+							  <linkUri>https://en.wikipedia.org/wiki/Portable_Network_Graphics</linkUri>
+						  </externalLink> and
+						  <externalLink>
+							  <linkText>
+								  SVG
+							  </linkText>
+							  <linkUri>https://en.wikipedia.org/wiki/Scalable_Vector_Graphics</linkUri>
+						  </externalLink>.
+					  </para>
+				  </listItem>
+				  <listItem>
+					  <para>
+						  The <legacyBold>Novacta.Shfb.LatexPlugIn</legacyBold> 
+						  supports the SVG
+						  image file format for the <literal>MSHelpViewer</literal>
+						  help output.
+					  </para>
+				  </listItem>
+				  <listItem>
+					  <para>
+						  The presentation styles
+						  <legacyBold>VS2010 + Latex</legacyBold> and
+						  <legacyBold>VS2013 + Latex</legacyBold>, which add the 
+						  ability to manage LaTeX content to styles
+						  <legacyBold>VS2010</legacyBold> and
+						  <legacyBold>VS2013</legacyBold>, respectively.
+					  </para>
+				  </listItem>
+			  </list>
+		  </content>
+	  </section>
+
+	  <section address="sectionConfigureLatexTools">
+		  <title>Using the LatexTools</title>
+		  <content>
+			  <para></para>
+			  <para>
+				  <legacyBold>Selecting a LaTeX-aware presentation style</legacyBold>
+			  </para>
+			  <para></para>
+			  <para>
+				  To select a presentation style able to manage LaTeX content, open
+				  the project properties and click on the
+				  <legacyBold>Build</legacyBold> tab. From the list
+				  of available presentation styles, select the one
+				  of your choice among those defined
+				  as <legacyBold>VS2010 + LaTeX</legacyBold> or
+				  <legacyBold>VS2010 + LaTeX</legacyBold>.
+				  For example, the following figure shows a project
+				  in which the
+				  <legacyBold>VS2013 + LaTeX</legacyBold> style
+				  has been selected.
+			  </para>
+			  <mediaLink>
+				  <image xlink:href="LatexStyleSelection"/>
+			  </mediaLink>
+			  <para></para>
+			  <para>
+				  <legacyBold>Adding and configuring the LatexComponent</legacyBold>
+			  </para>
+			  <para></para>
+			  <para>
+				  The
+				  <legacyBold>
+					  Novacta.Shfb.LatexComponent
+				  </legacyBold>
+				  must be added to a documentation project
+				  in order to manage LaTeX content in documentation topics.
+			  </para>
+			  <para>
+				  To such purpose, open the project properties and click on the
+				  <legacyBold>Components</legacyBold> tab. From the list
+				  of available components, select the one
+				  referred to as
+				  <legacyItalic>Novacta.Shfb.LatexComponent</legacyItalic>
+				  and click the <legacyBold>Add</legacyBold> button.
+				  Now the Latex component is inserted in the list of the
+				  components executed during
+				  the build process of the documentation project.
+				  Such list is showed on the right side
+				  of the tab, as exemplified in the following figure.
+			  </para>
+			  <mediaLink>
+				  <image xlink:href="LatexComponent"/>
+			  </mediaLink>
+			  <para>
+				  Once the LaTeX component has been committed for execution,
+				  it must be configured. By clicking the
+				  <legacyBold>Configure</legacyBold> button, the following
+				  pop-up window will be displayed.
+			  </para>
+			  <mediaLink>
+				  <image xlink:href="LatexComponentConfiguration"/>
+			  </mediaLink>
+			  <para>
+				  Through that window, configuration options can be set as follows.
+			  </para>
+			  <table>
+				  <title>LatexComponent Configuration</title>
+				  <tableHeader>
+					  <row>
+						  <entry>
+							  <para>Option</para>
+						  </entry>
+						  <entry>
+							  <para>Description</para>
+						  </entry>
+					  </row>
+				  </tableHeader>
+				  <row>
+					  <entry>
+						  <para>
+							  <legacyBold>
+								  Image file format
+							  </legacyBold>
+						  </para>
+					  </entry>
+					  <entry>
+						  <para>
+							  Through this option, one of the
+							  image formats supported for LaTeX
+							  content representation can be selected.
+						  </para>
+					  </entry>
+				  </row>
+				  <row>
+					  <entry address="Image-depth-correction">
+						  <para>
+							  <legacyBold>
+								  Image depth correction
+							  </legacyBold>
+						  </para>
+					  </entry>
+					  <entry>
+						  <para>
+							  When a LaTeX element is in-lined,
+							  then the corresponding image depth, i.e. the distance of the
+							  bottom of the image from its baseline, must be modified in
+							  order for the text represented in the image to have the same
+							  baseline of the surrounding text.
+						  </para>
+						  <para>
+							  The initial image depth is returned by the DviPng executable of
+							  the LaTeX distribution. Then, the difference between such value and
+							  that set for the <legacyBold>Image Depth Correction</legacyBold> option
+							  is taken as the final image depth.
+							  By default, the <legacyBold>Image Depth Correction</legacyBold> option
+							  is set to <literal>0</literal>,
+							  a value that works well for the default text size.
+						  </para>
+						  <para>
+							  Such behavior can be overridden for each specific equation,
+							  as discussed in the following section.
+						  </para>
+					  </entry>
+				  </row>
+				  <row>
+					  <entry address="Image-scale-percentage">
+						  <para>
+							  <legacyBold>
+								  Image scale percentage
+							  </legacyBold>
+						  </para>
+					  </entry>
+					  <entry>
+						  <para>
+							  This option controls the size of the text in a LaTeX equation.
+							  The default value is <literal>100</literal>,
+							  and is equivalent to apply the <codeInline>\normalsize</codeInline>
+							  text sizing LaTeX command while adopting
+							  <literal>10pt</literal> as the size of the main font in the document.
+							  Values other than
+							  <literal>100</literal> modify the size,
+							  but negative values are not allowed.
+						  </para>
+						  <para>
+							  Such behavior can be overridden for each specific equation,
+							  as discussed in the following section.
+						  </para>
+					  </entry>
+				  </row>
+				  <row>
+					  <entry>
+						  <para>
+							  <legacyBold>
+								  Redirect file processors
+							  </legacyBold>
+						  </para>
+					  </entry>
+					  <entry>
+						  <para>
+							  If checked, this option enables the redirection of
+							  LaTeX console outputs to the SHFB
+							  Help Build Log Content.
+						  </para>
+					  </entry>
+				  </row>
+				  <row>
+					  <entry address="Default-latex-mode">
+						  <para>
+							  <legacyBold>
+								  Default LaTeX Mode
+							  </legacyBold>
+						  </para>
+					  </entry>
+					  <entry>
+						  <para>
+							  This option controls if a LaTeX equation must be interpreted,
+							  by default, as entered in <literal>inline</literal> mode, or
+							  in <literal>display</literal> mode.
+							  The default configuration sets this option
+							  to <literal>display</literal>.
+						  </para>
+						  <para>
+							  Such behavior can be overridden for each specific equation,
+							  as discussed in the following section.
+						  </para>
+					  </entry>
+				  </row>
+				  <row>
+					  <entry>
+						  <para>
+							  <legacyBold>
+								  Additional Preamble Commands
+							  </legacyBold>
+						  </para>
+					  </entry>
+					  <entry>
+						  <para>
+							  If needed, this option enables the addition of specific
+							  commands to the preamble
+							  of the documents processed to get the
+							  LaTeX equations required in the documentation.
+						  </para>
+					  </entry>
+				  </row>
+				  <row>
+					  <entry>
+						  <para>
+							  <legacyBold>
+								  LaTeX bin folder
+							  </legacyBold>
+						  </para>
+					  </entry>
+					  <entry>
+						  <para>
+							  Through this option, you can specify the folder where
+							  are contained the binary files of the installed
+							  LaTeX distribution.
+						  </para>
+					  </entry>
+				  </row>
+				  <row>
+					  <entry>
+						  <para>
+							  <legacyBold>
+								  DviSvgm bin folder
+							  </legacyBold>
+						  </para>
+					  </entry>
+					  <entry>
+						  <para>
+							  Through this option, you can specify the folder where
+							  are contained the binary files of
+
+							  <externalLink>
+								  <linkText>
+									  DviSvgm
+								  </linkText>
+								  <linkUri>https://dvisvgm.de/</linkUri>
+							  </externalLink>,
+							  a converter of DVI files to the SVG graphics format.
+						  </para>
+						  <para>
+							  The converter has been added to several LaTeX distributions.
+							  If the installed distribution includes the tool, you can
+							  specify here the same path set for option
+							  <legacyBold>LaTeX bin folder</legacyBold>.
+							  Otherwise, you can download the converter
+							  <externalLink>
+								  <linkText>
+									  here
+								  </linkText>
+								  <linkUri>https://dvisvgm.de/Downloads/</linkUri>
+							  </externalLink>,
+							  save it in a folder and set the option
+							  accordingly.
+						  </para>
+						  <para>
+							  These binaries are only needed if you
+							  select the SVG image file format.
+						  </para>
+					  </entry>
+				  </row>
+			  </table>
+
+			  <para></para>
+			  <para>
+				  <legacyBold>The LatexPlugIn</legacyBold>
+			  </para>
+			  <para></para>
+			  <para>
+				  The
+				  <legacyBold>
+					  Novacta.Shfb.LatexPlugIn
+				  </legacyBold>
+				  must be added to a documentation project
+				  only if the project needs to support the SVG
+				  image file format for the  <literal>MSHelpViewer</literal>
+				  help output.
+			  </para>
+			  <para>
+				  To do so, open the project properties and click on the
+				  <legacyBold>Plug-Ins</legacyBold> tab. From the list
+				  of available plug-ins, select the one
+				  referred to as
+				  <legacyItalic>Novacta.Shfb.LatexPlugIn</legacyItalic>
+				  and click the <legacyBold>Add</legacyBold> button.
+				  Now the Latex plug-in is inserted in the list of the
+				  plug-ins executed during
+				  the build process of the documentation project.
+				  The plug-ins committed for execution are listed on the right side
+				  of the tab, as exemplified in the following figure.
+			  </para>
+			  <mediaLink>
+				  <image xlink:href="LatexPlugIn"/>
+			  </mediaLink>
+		  </content>
+	  </section>
+
+	  <section address="sectionAddLatexContentToXmlComments">
+		  <title>Adding LaTeX equations in XML comments</title>
+		  <content>
+			  <para>
+				  LaTeX equations can be added to the XML comments on your
+				  source code by inserting custom XML elements, referred
+				  to as the <legacyItalic>LaTeX</legacyItalic> elements.
+			  </para>
+			  <para>
+				  The start-tag of such elements
+				  is <codeInline><![CDATA[<latex>]]></codeInline>.
+				  The basic form of a <legacyItalic>LaTeX</legacyItalic> element,
+				  i.e. a form with no XML
+				  attributes, is as follows.
+			  </para>
+			  <code language="xml">
+				  <![CDATA[
+            <latex>X_{(0)}=2^{-1/3}</latex>
+            ]]>
+			  </code>
+			  <para>
+				  When <codeInline><![CDATA[<latex>]]></codeInline> elements are 
+				  processed,
+				  their content is interpreted as having document class
+				  <legacyBold>article</legacyBold>,
+				  with an option of
+				  <legacyBold>10pt</legacyBold> for the size of the
+				  main font in the document, and the
+				  <codeInline>\pagestyle</codeInline> set to
+				  <literal>empty</literal>. You can also
+				  assume as loaded packages
+				  <externalLink>
+					  <linkText>
+						  amsmath
+					  </linkText>
+					  <linkUri>https://ctan.org/pkg/amsmath</linkUri>
+				  </externalLink>
+				  and
+				  <externalLink>
+					  <linkText>
+						  amsfonts
+					  </linkText>
+					  <linkUri>https://ctan.org/pkg/amsfonts</linkUri>
+				  </externalLink>.
+				  Also, package
+				  <externalLink>
+					  <linkText>
+						  preview
+					  </linkText>
+					  <linkUri>https://ctan.org/pkg/preview</linkUri>
+				  </externalLink>
+				  is loaded with options <legacyItalic>active</legacyItalic>,
+				  <legacyItalic>textmath</legacyItalic>, and
+				  <legacyItalic>displaymath</legacyItalic> enabled. 
+			  </para>
+			  <para>
+				  When the default configuration
+				  is active and the latex element is in basic form, then its content
+				  is interpreted as inserted in a displayed mathematical
+				  environment (separated by the main text), and sized
+				  applying the <codeInline>\normalsize</codeInline> LaTeX command.
+			  </para>
+			  <para>
+				  Such behavior can be overridden by adding attributes
+				  to the latex element or overriding the default configuration.
+			  </para>
+			  <para>
+				  If you want a LaTeX formula displayed in-line,
+				  that is, within the body of text where it is declared,
+				  you can add a <codeInline>mode</codeInline> attribute
+				  having the <literal>"inline"</literal> value, as in the following
+				  example.
+			  </para>
+			  <code language="c#">
+				  /// Let us assume that the random variable
+				  /// <![CDATA[<latex mode="inline">Y_{i}</latex>]]> has distribution function
+				  /// <![CDATA[<latex mode="inline">F_{Y_{i}}</latex>]]>.
+			  </code>
+			  <para>
+				  If a <legacyItalic>LaTeX</legacyItalic>  element has
+				  no <codeInline>mode</codeInline> attribute, then its
+				  mode is set, by default, according to the
+				  <link xlink:href="#Default-latex-mode">
+					  Default LaTeX mode
+				  </link>
+				  configuration option.
+			  </para>
+			  <para>
+				  The <legacyBold>Novacta.Shfb.LatexComponent</legacyBold>
+				  inserts images in help files
+				  to represent your equations.
+				  When
+				  a <legacyItalic>LaTeX</legacyItalic> element is in-lined,
+				  then the corresponding image
+				  depth is, by default, set according to the
+				  <link xlink:href="#Image-depth-correction">
+					  Image depth correction
+				  </link>
+				  configuration option.
+				  However, the image depth for a given
+				  <legacyItalic>LaTeX</legacyItalic> element
+				  can be hard coded by adding a <codeInline>depth</codeInline> attribute,
+				  as in the following example.
+			  </para>
+			  <code language="xml">
+				  <![CDATA[<latex depth="10">F_{Y_{i}}</latex>]]>
+			  </code>
+			  <para>
+				  In a <legacyItalic>LaTeX</legacyItalic> element,
+				  the size of the text is controlled, by default,
+				  through the
+				  <link xlink:href="#Image-scale-percentage">
+					  Image scale percentage
+				  </link>
+				  configuration option.
+				  However, the size of a given
+				  <legacyItalic>LaTeX</legacyItalic> element can be
+				  overridden by adding to it
+				  a <codeInline>scale</codeInline> attribute.
+				  For example, if you want its size being the
+				  <literal>70%</literal> of the basic size, you can write
+				  a <legacyItalic>LaTeX</legacyItalic> element as follows.
+			  </para>
+			  <code language="xml">
+				  <![CDATA[<latex scale="scriptsize">F_{Y_{i}}</latex>]]>
+			  </code>
+			  <para>
+				  More thoroughly, you can set the value of the
+				  <codeInline>scale</codeInline> attribute
+				  using any of the predefined values shown in the following table,
+				  where the corresponding percentages are also reported.
+			  </para>
+			  <table>
+				  <title>Scaling LaTeX Equations</title>
+				  <tableHeader>
+					  <row>
+						  <entry>
+							  <para>Predefined LaTeX size</para>
+						  </entry>
+						  <entry>
+							  <para>Percentage</para>
+						  </entry>
+						  <entry>
+							  <para>Example</para>
+						  </entry>
+					  </row>
+				  </tableHeader>
+				  <row>
+					  <entry>
+						  <para>
+							  <legacyBold>
+								  tiny
+							  </legacyBold>
+						  </para>
+					  </entry>
+					  <entry>
+						  <para>
+							  50
+						  </para>
+					  </entry>
+					  <entry>
+						  <para>
+							  <ltx:latex mode="inline" scale="tiny">
+								  h\left(x\right)=\sum_{i=0}^{n-1} f_i\left(x^2\right)
+							  </ltx:latex>
+						  </para>
+					  </entry>
+				  </row>
+				  <row>
+					  <entry>
+						  <para>
+							  <legacyBold>
+								  scriptsize
+							  </legacyBold>
+						  </para>
+					  </entry>
+					  <entry>
+						  <para>
+							  70
+						  </para>
+					  </entry>
+					  <entry>
+						  <para>
+							  <ltx:latex mode="inline" scale="scriptsize">
+								  h\left(x\right)=\sum_{i=0}^{n-1} f_i\left(x^2\right)
+							  </ltx:latex>
+						  </para>
+					  </entry>
+				  </row>
+				  <row>
+					  <entry>
+						  <para>
+							  <legacyBold>
+								  footnotesize
+							  </legacyBold>
+						  </para>
+					  </entry>
+					  <entry>
+						  <para>
+							  80
+						  </para>
+					  </entry>
+					  <entry>
+						  <para>
+							  <ltx:latex mode="inline" scale="footnotesize">
+								  h\left(x\right)=\sum_{i=0}^{n-1} f_i\left(x^2\right)
+							  </ltx:latex>
+						  </para>
+					  </entry>
+				  </row>
+				  <row>
+					  <entry>
+						  <para>
+							  <legacyBold>
+								  small
+							  </legacyBold>
+						  </para>
+					  </entry>
+					  <entry>
+						  <para>
+							  90
+						  </para>
+					  </entry>
+					  <entry>
+						  <para>
+							  <ltx:latex mode="inline" scale="small">
+								  h\left(x\right)=\sum_{i=0}^{n-1} f_i\left(x^2\right)
+							  </ltx:latex>
+						  </para>
+					  </entry>
+				  </row>
+				  <row>
+					  <entry>
+						  <para>
+							  <legacyBold>
+								  normalsize
+							  </legacyBold>
+						  </para>
+					  </entry>
+					  <entry>
+						  <para>
+							  100
+						  </para>
+					  </entry>
+					  <entry>
+						  <para>
+							  <ltx:latex mode="inline" scale="normalsize">
+								  h\left(x\right)=\sum_{i=0}^{n-1} f_i\left(x^2\right)
+							  </ltx:latex>
+						  </para>
+					  </entry>
+				  </row>
+				  <row>
+					  <entry>
+						  <para>
+							  <legacyBold>
+								  large
+							  </legacyBold>
+						  </para>
+					  </entry>
+					  <entry>
+						  <para>
+							  120
+						  </para>
+					  </entry>
+					  <entry>
+						  <para>
+							  <ltx:latex mode="inline" scale="large">
+								  h\left(x\right)=\sum_{i=0}^{n-1} f_i\left(x^2\right)
+							  </ltx:latex>
+						  </para>
+					  </entry>
+				  </row>
+				  <row>
+					  <entry>
+						  <para>
+							  <legacyBold>
+								  Large
+							  </legacyBold>
+						  </para>
+					  </entry>
+					  <entry>
+						  <para>
+							  144
+						  </para>
+					  </entry>
+					  <entry>
+						  <para>
+							  <ltx:latex mode="inline" scale="Large">
+								  h\left(x\right)=\sum_{i=0}^{n-1} f_i\left(x^2\right)
+							  </ltx:latex>
+						  </para>
+					  </entry>
+				  </row>
+				  <row>
+					  <entry>
+						  <para>
+							  <legacyBold>
+								  LARGE
+							  </legacyBold>
+						  </para>
+					  </entry>
+					  <entry>
+						  <para>
+							  172.8
+						  </para>
+					  </entry>
+					  <entry>
+						  <para>
+							  <ltx:latex mode="inline" scale="LARGE">
+								  h\left(x\right)=\sum_{i=0}^{n-1} f_i\left(x^2\right)
+							  </ltx:latex>
+						  </para>
+					  </entry>
+				  </row>
+				  <row>
+					  <entry>
+						  <para>
+							  <legacyBold>
+								  huge
+							  </legacyBold>
+						  </para>
+					  </entry>
+					  <entry>
+						  <para>
+							  207.4
+						  </para>
+					  </entry>
+					  <entry>
+						  <para>
+							  <ltx:latex mode="inline" scale="huge">
+								  h\left(x\right)=\sum_{i=0}^{n-1} f_i\left(x^2\right)
+							  </ltx:latex>
+						  </para>
+					  </entry>
+				  </row>
+				  <row>
+					  <entry>
+						  <para>
+							  <legacyBold>
+								  Huge
+							  </legacyBold>
+						  </para>
+					  </entry>
+					  <entry>
+						  <para>
+							  248.8
+						  </para>
+					  </entry>
+					  <entry>
+						  <para>
+							  <ltx:latex mode="inline" scale="Huge">
+								  h\left(x\right)=\sum_{i=0}^{n-1} f_i\left(x^2\right)
+							  </ltx:latex>
+						  </para>
+					  </entry>
+				  </row>
+			  </table>
+			  <para>
+				  As an example, the following file printout shows the source code for
+				  type
+				  <codeEntityReference qualifyHint="false">
+					  T:SampleClassLibrary.IntegerOperation
+				  </codeEntityReference>,
+				  as defined in project
+				  <externalLink>
+					  <linkText>
+						  SampleClassLibrary
+					  </linkText>
+					  <linkUri>https://github.com/novacta/shfb-latex-tools/blob/master/samples/SampleClassLibrary</linkUri>
+				  </externalLink>:
+			  </para>
+			  <code numberLines="true" source="..\..\samples\SampleClassLibrary\IntegerOperation.cs"
+			   language="cs" title="SampleClassLibrary\IntegerOperation.cs" />
+			  <para>
+				  Note the <legacyItalic>LaTeX</legacyItalic> elements at line 21-24
+				  in the XML comments on method
+				  <legacyBold>Operate</legacyBold>.
+				  You can check
+				  <codeEntityReference linkText="here" qualifyHint="false">
+					  M:SampleClassLibrary.IntegerOperation.Operate(System.Func{System.Int32,System.Int32},System.Int32)
+				  </codeEntityReference>
+				  how the
+				  corresponding documentation looks like.
+			  </para>
+		  </content>
+	  </section>
+
+	  <section address="sectionAddLatexContentToCOnceptualTopics">
+		  <title>Adding LaTeX equations in conceptual topics</title>
+		  <content>
+			  <para>
+				  Elements in
+				  <externalLink>
+					  <linkText>
+						  MAML
+					  </linkText>
+					  <linkUri>http://ewsoftware.github.io/MAMLGuide</linkUri>
+				  </externalLink>
+				  conceptual topics must be qualified using a namespace.
+				  To qualify <legacyItalic>LaTeX</legacyItalic> elements,
+				  add to the topic's document element a namespace attribute
+				  associated with prefix <codeInline>ltx</codeInline>,
+				  as shown in the following example.
+			  </para>
+			  <code language="xml">
+				  <![CDATA[
+          <topic id="303c996a-2911-4c08-b492-6496c82b3edb" revisionNumber="1">
+            <!-- This element name will change based on the document type -->
+            <developerConceptualDocument
+              xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xmlns:ltx="http://www.novacta.net/2018/XSL/ShfbLatexTools">
+              
+              <!-- The content goes here -->
+
+            </developerConceptualDocument>
+          </topic>
+          ]]>
+			  </code>
+			  <para>
+				  Now <legacyItalic>LaTeX</legacyItalic> elements can be added
+				  by prefixing their tags with <codeInline>ltx</codeInline>,
+				  as follows.
+			  </para>
+			  <code language="xml">
+				  <![CDATA[
+            <ltx:latex scale="LARGE" mode="inline">X_{(0)}</ltx:latex>
+          ]]>
+			  </code>
+			  <para>
+				  As an example, the following file printout shows the source code for
+				  a conceptual topic about
+				  <codeEntityReference qualifyHint="false">
+					  T:SampleClassLibrary.IntegerOperation
+				  </codeEntityReference>,
+				  as defined in project
+				  <externalLink>
+					  <linkText>
+						  SampleClassLibrary
+					  </linkText>
+					  <linkUri>https://github.com/novacta/shfb-latex-tools/blob/master/samples/SampleClassLibrary</linkUri>
+				  </externalLink>:
+			  </para>
+			  <code numberLines="true" source="..\..\samples\SampleClassLibrary.Documentation\Content\OperatingOnIntegers.aml"
+			   language="xml" title="SampleClassLibrary.Documentation\Content\OperatingOnIntegers.aml" />
+			  <para>
+				  Note the <legacyItalic>LaTeX</legacyItalic> elements at lines 24-25.
+				  You can check
+				  <link xlink:href="8da2157d-b4f7-4b54-8e31-04582d7df903">
+					  here
+				  </link>
+				  how such conceptual topic looks like.
+			  </para>
+		  </content>
+	  </section>
+
+	  <relatedTopics>
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>

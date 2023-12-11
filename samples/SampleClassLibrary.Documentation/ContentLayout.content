@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Topics>
-  <Topic id="3df11b4d-ed21-48e5-8eb5-a1f6cf79c534" visible="True" isDefault="true" title="Welcome">
+  <Topic id="15de5c0e-e274-4b7c-a03d-2f4f90e77a86" visible="True" isDefault="true" isSelected="true" title="Welcome" tocTitle="Welcome">
     <HelpKeywords>
       <HelpKeyword index="K" term="Welcome" />
     </HelpKeywords>
   </Topic>
-  <Topic id="b10d4d75-3729-4247-a58a-b9e5b6e4bb4d" visible="True" title="Operating on integers" />
-  <Topic id="4c3871a5-d7c6-477c-96ee-e71f0a67f7a8" visible="True" isSelected="true" title="Operating on integer arrays" />
-  <Topic id="c711650b-cb39-4fce-8938-885a71d52e6f" visible="True" isExpanded="true" title="Version History">
+  <Topic id="b10d4d75-3729-4247-a58a-b9e5b6e4bb4d" visible="True" title="Operating on integers" tocTitle="Operating on integers" />
+  <Topic id="4c3871a5-d7c6-477c-96ee-e71f0a67f7a8" visible="True" title="Operating on integer arrays" tocTitle="Operating on integer arrays" />
+  <Topic id="251c661a-8a0a-449b-92fa-0ee906ee4773" visible="True" apiParentMode="InsertAfter" title="Version History" tocTitle="Version History">
     <HelpKeywords>
       <HelpKeyword index="K" term="version, history" />
     </HelpKeywords>
-    <Topic id="a6fc421b-f7f2-4b02-a2e2-d703be7ebaa4" visible="True" title="Version 1.0.0.0">
+    <Topic id="2c501263-1f40-4015-a446-9d14049fae10" visible="True" title="Version 1.0.0.0">
       <HelpKeywords>
         <HelpKeyword index="K" term="version, 1.0.0.0" />
       </HelpKeywords>

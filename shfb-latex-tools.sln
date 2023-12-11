@@ -5,19 +5,17 @@ VisualStudioVersion = 17.0.31825.309
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EAFB3F83-5CA9-49B6-80E3-AF6962A8D989}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Novacta.Shfb.LatexConfiguration", "src\Novacta.Shfb.LatexConfiguration\Novacta.Shfb.LatexConfiguration.csproj", "{6A5528FF-0A09-4752-925C-6EAFA69FB78E}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Novacta.Shfb.LatexTools", "src\Novacta.Shfb.LatexTools\Novacta.Shfb.LatexTools.csproj", "{BDB8D76D-5421-4303-87D4-925A6932D4FC}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Novacta.Shfb.LatexTools.ConsoleApp", "src\Novacta.Shfb.LatexTools.ConsoleApp\Novacta.Shfb.LatexTools.ConsoleApp.csproj", "{1AAD3BB9-9367-4D6A-B810-C2D82F2A1631}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{AD8908F3-C22A-435A-94BD-FE709B1822F2}"
 EndProject
-Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "SampleClassLibrary.Documentation", "samples\SampleClassLibrary.Documentation\SampleClassLibrary.Documentation.shfbproj", "{93C88C34-9353-4835-A89C-256D08EB0427}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleClassLibrary", "samples\SampleClassLibrary\SampleClassLibrary.csproj", "{D4B6473F-9D24-4791-8AEC-10347125908B}"
 EndProject
-Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "Novacta.Shfb.LatexTools.Documentation", "src\Novacta.Shfb.LatexTools.Documentation\Novacta.Shfb.LatexTools.Documentation.shfbproj", "{079A2E5D-BB12-4B65-8BA0-22B0AED32A48}"
+Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "SampleClassLibrary.Documentation", "samples\SampleClassLibrary.Documentation\SampleClassLibrary.Documentation.shfbproj", "{B634C899-F76C-4654-872C-8062F6D2C7E7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleClassLibrary", "samples\SampleClassLibrary\SampleClassLibrary.csproj", "{1D6A36E3-F866-4719-9154-91115A59154D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Novacta.Shfb.LatexTools", "src\Novacta.Shfb.LatexTools\Novacta.Shfb.LatexTools.csproj", "{76806B09-E316-4EB9-ABF3-931C99273A5C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Novacta.Shfb.LatexConfiguration", "src\Novacta.Shfb.LatexConfiguration\Novacta.Shfb.LatexConfiguration.csproj", "{691F07F0-88AF-4671-A063-D79CBC80053C}"
+EndProject
+Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "Novacta.Shfb.LatexTools.Documentation", "src\Novacta.Shfb.LatexTools.Documentation\Novacta.Shfb.LatexTools.Documentation.shfbproj", "{B591B211-42B8-455E-89DF-437971C168C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,41 +23,36 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6A5528FF-0A09-4752-925C-6EAFA69FB78E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6A5528FF-0A09-4752-925C-6EAFA69FB78E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6A5528FF-0A09-4752-925C-6EAFA69FB78E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6A5528FF-0A09-4752-925C-6EAFA69FB78E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BDB8D76D-5421-4303-87D4-925A6932D4FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BDB8D76D-5421-4303-87D4-925A6932D4FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BDB8D76D-5421-4303-87D4-925A6932D4FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BDB8D76D-5421-4303-87D4-925A6932D4FC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1AAD3BB9-9367-4D6A-B810-C2D82F2A1631}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1AAD3BB9-9367-4D6A-B810-C2D82F2A1631}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1AAD3BB9-9367-4D6A-B810-C2D82F2A1631}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1AAD3BB9-9367-4D6A-B810-C2D82F2A1631}.Release|Any CPU.Build.0 = Release|Any CPU
-		{93C88C34-9353-4835-A89C-256D08EB0427}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{93C88C34-9353-4835-A89C-256D08EB0427}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{93C88C34-9353-4835-A89C-256D08EB0427}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{93C88C34-9353-4835-A89C-256D08EB0427}.Release|Any CPU.Build.0 = Release|Any CPU
-		{079A2E5D-BB12-4B65-8BA0-22B0AED32A48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{079A2E5D-BB12-4B65-8BA0-22B0AED32A48}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{079A2E5D-BB12-4B65-8BA0-22B0AED32A48}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{079A2E5D-BB12-4B65-8BA0-22B0AED32A48}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1D6A36E3-F866-4719-9154-91115A59154D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1D6A36E3-F866-4719-9154-91115A59154D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1D6A36E3-F866-4719-9154-91115A59154D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1D6A36E3-F866-4719-9154-91115A59154D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4B6473F-9D24-4791-8AEC-10347125908B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4B6473F-9D24-4791-8AEC-10347125908B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4B6473F-9D24-4791-8AEC-10347125908B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4B6473F-9D24-4791-8AEC-10347125908B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B634C899-F76C-4654-872C-8062F6D2C7E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B634C899-F76C-4654-872C-8062F6D2C7E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B634C899-F76C-4654-872C-8062F6D2C7E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B634C899-F76C-4654-872C-8062F6D2C7E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76806B09-E316-4EB9-ABF3-931C99273A5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76806B09-E316-4EB9-ABF3-931C99273A5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76806B09-E316-4EB9-ABF3-931C99273A5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76806B09-E316-4EB9-ABF3-931C99273A5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{691F07F0-88AF-4671-A063-D79CBC80053C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{691F07F0-88AF-4671-A063-D79CBC80053C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{691F07F0-88AF-4671-A063-D79CBC80053C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{691F07F0-88AF-4671-A063-D79CBC80053C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B591B211-42B8-455E-89DF-437971C168C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B591B211-42B8-455E-89DF-437971C168C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B591B211-42B8-455E-89DF-437971C168C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B591B211-42B8-455E-89DF-437971C168C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{6A5528FF-0A09-4752-925C-6EAFA69FB78E} = {EAFB3F83-5CA9-49B6-80E3-AF6962A8D989}
-		{BDB8D76D-5421-4303-87D4-925A6932D4FC} = {EAFB3F83-5CA9-49B6-80E3-AF6962A8D989}
-		{1AAD3BB9-9367-4D6A-B810-C2D82F2A1631} = {EAFB3F83-5CA9-49B6-80E3-AF6962A8D989}
-		{93C88C34-9353-4835-A89C-256D08EB0427} = {AD8908F3-C22A-435A-94BD-FE709B1822F2}
-		{079A2E5D-BB12-4B65-8BA0-22B0AED32A48} = {EAFB3F83-5CA9-49B6-80E3-AF6962A8D989}
-		{1D6A36E3-F866-4719-9154-91115A59154D} = {AD8908F3-C22A-435A-94BD-FE709B1822F2}
+		{D4B6473F-9D24-4791-8AEC-10347125908B} = {AD8908F3-C22A-435A-94BD-FE709B1822F2}
+		{B634C899-F76C-4654-872C-8062F6D2C7E7} = {AD8908F3-C22A-435A-94BD-FE709B1822F2}
+		{76806B09-E316-4EB9-ABF3-931C99273A5C} = {EAFB3F83-5CA9-49B6-80E3-AF6962A8D989}
+		{691F07F0-88AF-4671-A063-D79CBC80053C} = {EAFB3F83-5CA9-49B6-80E3-AF6962A8D989}
+		{B591B211-42B8-455E-89DF-437971C168C3} = {EAFB3F83-5CA9-49B6-80E3-AF6962A8D989}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2F1FD5AF-7B37-404C-A950-759158ABC4BC}

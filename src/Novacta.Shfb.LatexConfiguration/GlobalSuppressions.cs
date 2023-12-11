@@ -1,12 +1,11 @@
-﻿// Copyright (c) Giovanni Lafratta. All rights reserved.
-// Licensed under the MIT license. 
-// See the LICENSE file in the project root for more information.
+﻿// This file is used by Code Analysis to maintain SuppressMessage
+// attributes that are applied to this project.
+// Project-level suppressions either have no target or are given
+// a specific target and scoped to a namespace, type, member, etc.
 
 using System.Diagnostics.CodeAnalysis;
 
-[assembly: SuppressMessage(
-    category: "Design", 
-    checkId: "CA1034:Nested types should not be visible", 
-    Justification = "<Pending>", 
-    Scope = "type", 
-    Target = "~T:Novacta.Shfb.LatexConfiguration.LatexConfigDlg.BuildComponentFactory")]
+[assembly: SuppressMessage("Design", "CA1034:Nested types should not be visible", Justification = "<Pending>", Scope = "type", Target = "~T:Novacta.Shfb.LatexConfiguration.WindowsFormsExampleConfigDlg.PlugInFactory")]
+[assembly: SuppressMessage("Design", "CA1034:Nested types should not be visible", Justification = "<Pending>", Scope = "type", Target = "~T:Novacta.Shfb.LatexConfiguration.WindowsFormsExampleConfigDlg.BuildComponentFactory")]
+[assembly: SuppressMessage("Design", "CA1034:Nested types should not be visible", Justification = "<Pending>", Scope = "type", Target = "~T:Novacta.Shfb.LatexConfiguration.XamlExampleConfigDlg.BuildComponentFactory")]
+[assembly: SuppressMessage("Design", "CA1034:Nested types should not be visible", Justification = "<Pending>", Scope = "type", Target = "~T:Novacta.Shfb.LatexConfiguration.XamlExampleConfigDlg.PlugInFactory")]

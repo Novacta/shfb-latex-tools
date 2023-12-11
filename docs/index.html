@@ -2,13 +2,30 @@
 <html lang="en-US">
 <head>
 	<meta charset="UTF-8">
-	<meta http-equiv="refresh" content="1;url=html/fe868fbe-1bfd-47f7-bf24-e1fd586864c6.htm">
+	<meta http-equiv="refresh" content="1;url=html/5329bde0-92e2-4707-ad56-64caa353b849.htm">
 	<script type="text/javascript">
-		window.location.replace("html/fe868fbe-1bfd-47f7-bf24-e1fd586864c6.htm")
+		// Use an alternate default page if a topic is specified in the query string
+		var location = window.location;
+		var queryString = location.search;
+		if(queryString != "")
+		{
+			var idx, options = queryString.split(/[\?\=\&]/);
+			for(idx = 0; idx < options.length; idx++)
+			{
+				// Don't allow javascript, or references outside the current site
+				if(options[idx] == "topic" && idx + 1 < options.length && options[idx + 1].match(/^\w[\w\/.-]*$/))
+				{
+					location.replace(location.origin + location.pathname + options[idx + 1]);
+					break;
+				}
+			}
+		}
+		else
+			location.replace("html/5329bde0-92e2-4707-ad56-64caa353b849.htm");
 	</script>
 	<title>Novacta.Shfb.LatexTools Documentation - Redirect</title>
 </head>
 <body>
-	<p>If you are not redirected automatically, follow this link to the <a href="html/fe868fbe-1bfd-47f7-bf24-e1fd586864c6.htm">default topic</a>.</p>
+	<p>If you are not redirected automatically, follow this link to the <a href="html/5329bde0-92e2-4707-ad56-64caa353b849.htm">default topic</a>.</p>
 </body>
 </html>
