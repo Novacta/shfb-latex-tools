@@ -7,13 +7,22 @@ provides types to manage
 
 ## Features
 
-Available versions of the **LatexTools** have different features, as described in the following table.
+Available versions of the **LatexTools** have different target presentation styles, as described in the following table.
 
-| Feature | v2.0.0 | v1.0.0 |
-| ------- | ------ | ------ |
-| Supported [SHFB](https://github.com/EWSoftware/SHFB) versions | 2022.8.14.0 or later | 2021.11.7.0 - 2022.2.6.0 |
-| Target presentation styles | Default 2022, Markdown, OpenXml, VS2013 | Customized versions of VS2010 and VS2013 styles |
-| Documentation comments able to include LaTeX contents | MAML/XML |  MAML/XML |
+| Version | Target presentation styles |
+| ------- | --------------- | ------ |
+| v2.0.0 or later  | Default 2022, Markdown, OpenXml, VS2013 |  
+| v1.0.0 | Customized versions of VS2010 and VS2013 styles |
+
+## SHFB Compatibility
+
+Each version of the library is compatible with a specific range of [SHFB](https://github.com/EWSoftware/SHFB) versions, as follows.
+
+| Version | Supported SHFB versions |
+| ------- | ------------------------------------------------------------- | 
+| v3.0.0 | 2025.9.30.0 or later | 
+| v2.0.0 | 2022.8.14.0 - 2025.3.22.0 | 
+| v1.0.0 | 2021.11.7.0 - 2022.2.6.0 |
 
 ## Installation
 

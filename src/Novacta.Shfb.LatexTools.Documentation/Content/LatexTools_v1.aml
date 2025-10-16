@@ -33,19 +33,6 @@
 					  </linkText>
 					  <linkUri>https://github.com/EWSoftware/SHFB/releases</linkUri>
 				  </externalLink>.
-				  Notice that version 1.0.0 requires packages
-				  <externalLink>
-					  <linkText>amsmath</linkText>
-					  <linkUri>https://ctan.org/pkg/amsmath</linkUri>
-				  </externalLink>,
-				  <externalLink>
-					  <linkText>amsfonts</linkText>
-					  <linkUri>https://ctan.org/pkg/amsfonts</linkUri>
-				  </externalLink>, and
-				  <externalLink>
-					  <linkText>preview</linkText>
-					  <linkUri>https://ctan.org/pkg/preview</linkUri>
-				  </externalLink>.
 			  </para>
 			  
 			  <para></para>
@@ -62,7 +49,23 @@
 					  <linkUri>https://www.latex-project.org/get/#tex-distributions</linkUri>
 				  </externalLink>.
 			  </para>
-
+			  <alert class="important">
+				  <para>
+					  Notice that version 1.0.0 of the tools requires the LaTeX packages
+					  <externalLink>
+						  <linkText>amsmath</linkText>
+						  <linkUri>https://ctan.org/pkg/amsmath</linkUri>
+					  </externalLink>,
+					  <externalLink>
+						  <linkText>amsfonts</linkText>
+						  <linkUri>https://ctan.org/pkg/amsfonts</linkUri>
+					  </externalLink>, and
+					  <externalLink>
+						  <linkText>preview</linkText>
+						  <linkUri>https://ctan.org/pkg/preview</linkUri>
+					  </externalLink>.
+				  </para>
+			  </alert>
 			  <para></para>
 			  <para>
 				  <legacyBold>Create a SHFB documentation project</legacyBold>
@@ -76,7 +79,7 @@
 				  or via the
 				  <externalLink>
 					  <linkText>SHFB Visual Studio package</linkText>
-					  <linkUri>http://ewsoftware.github.io/SHFB/html/78507051-0fc0-479b-9d47-78a10398eaf2.htm#NewProject/</linkUri>
+					  <linkUri>https://ewsoftware.github.io/SHFB/html/b128ad2a-787e-48c7-b946-f6953080c386.htm</linkUri>
 				  </externalLink>.
 			  </para>
 			  <para></para>

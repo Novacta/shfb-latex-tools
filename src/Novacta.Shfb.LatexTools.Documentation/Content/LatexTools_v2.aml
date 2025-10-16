@@ -19,7 +19,7 @@
 			  <para>
 				  Version 2.0.0 of the
 				  <legacyBold>LatexTools</legacyBold>
-				  targets SHFB, version 2021.8.14.0 or later.
+				  targets SHFB, versions 2021.8.14.0 - 2025.3.22.0.
 			  </para>
 			  <para>
 				  Make sure that a supported SHFB version of your choice
@@ -32,11 +32,6 @@
 						  here
 					  </linkText>
 					  <linkUri>https://github.com/EWSoftware/SHFB/releases</linkUri>
-				  </externalLink>.
-				  Notice that version 2.0.0 requires package
-				  <externalLink>
-					  <linkText>preview</linkText>
-					  <linkUri>https://ctan.org/pkg/preview</linkUri>
 				  </externalLink>.
 			  </para>
 
@@ -54,7 +49,15 @@
 					  <linkUri>https://www.latex-project.org/get/#tex-distributions</linkUri>
 				  </externalLink>.
 			  </para>
-
+			  <alert class="important">
+				  <para>
+				  Notice that version 2.0.0 of the tools requires the LaTeX package
+				  <externalLink>
+					  <linkText>preview</linkText>
+					  <linkUri>https://ctan.org/pkg/preview</linkUri>
+				  </externalLink>.	
+				  </para>
+			  </alert>
 			  <para></para>
 			  <para>
 				  <legacyBold>Create a SHFB documentation project</legacyBold>
@@ -68,7 +71,7 @@
 				  or via the
 				  <externalLink>
 					  <linkText>SHFB Visual Studio package</linkText>
-					  <linkUri>http://ewsoftware.github.io/SHFB/html/78507051-0fc0-479b-9d47-78a10398eaf2.htm#NewProject/</linkUri>
+					  <linkUri>https://ewsoftware.github.io/SHFB/html/b128ad2a-787e-48c7-b946-f6953080c386.htm</linkUri>
 				  </externalLink>.
 			  </para>
 			  <para></para>

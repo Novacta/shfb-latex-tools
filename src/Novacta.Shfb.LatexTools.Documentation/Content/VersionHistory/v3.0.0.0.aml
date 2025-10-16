@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="8fff95cc-b2fc-41fa-875e-b5d035cf6611" revisionNumber="1">
+  <developerConceptualDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <!--
+    <summary>
+      <para>Optional summary abstract</para>
+    </summary>
+    -->
+
+	  <introduction>
+		  <para>
+			  Version 3.0.0 was released on October 16 2025.
+		  </para>
+	  </introduction>
+
+	  <section>
+		  <title>Changes in This Release</title>
+		  <content>
+
+			  <list class="bullet">
+				  <listItem>
+					  <para>
+						  Added support for
+						  <externalLink>
+							  <linkText>SHFB</linkText>
+							  <linkUri>https://github.com/EWSoftware/SHFB</linkUri>
+						  </externalLink>
+						  version 2025.9.30.0 or later.
+					  </para>
+				  </listItem>
+				  <listItem>
+					  <para>
+						  <legacyBold>(Breaking)</legacyBold>
+						  Removed support for
+						  <externalLink>
+							  <linkText>SHFB</linkText>
+							  <linkUri>https://github.com/EWSoftware/SHFB</linkUri>
+						  </externalLink>
+						  versions 2022.8.14.0 - 2025.3.22.0.
+						  Such versions are supported via 
+						  <legacyBold>Novacta.Shfb.LatexTools</legacyBold>
+						  version 2.0.0.
+					  </para>
+				  </listItem>
+			  </list>
+
+		  </content>
+	  </section>
+
+	  <relatedTopics>
+		  <link xlink:href="4fd26de9-a6e5-4740-a82e-75d9041a8e5d" />
+	  </relatedTopics>
+  </developerConceptualDocument>
+</topic>

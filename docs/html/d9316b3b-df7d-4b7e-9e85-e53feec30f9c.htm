@@ -1,25 +1,26 @@
 ﻿<!DOCTYPE html ><html lang="en-US"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><link rel="shortcut icon" href="../icons/favicon.ico" /><link rel="stylesheet" href="../css/bulma.css" /><link rel="stylesheet" href="../css/font-awesome.min.css" /><link rel="stylesheet" href="../css/presentationStyle.css" /><link rel="stylesheet" href="../css/vs.min.css" /><script src="../scripts/jquery-3.5.1.min.js"></script><script src="../scripts/clipboard.min.js"></script><script src="../scripts/highlight.min.js"></script><script src="../scripts/presentationStyle.js"></script><title>Getting started with Novacta.Shfb.LatexTools, version 2.0.0</title><meta name="Title" content="Getting started with Novacta.Shfb.LatexTools, version 2.0.0" /><meta name="Help.Id" content="d9316b3b-df7d-4b7e-9e85-e53feec30f9c" /><meta name="Help.ContentType" content="Concepts" /><meta name="guid" content="d9316b3b-df7d-4b7e-9e85-e53feec30f9c" /><meta name="Description" content="Install a supported version of SHFB" /></head><body><div class="fixedLayout"><div id="Header" class="fixedHeader"><div class="pageHeader level mb-0 py-2 px-4"><div id="TitleContainer" class="level-left"><div class="level-item"><img src="../icons/Help.png" /></div><div id="DocumentationTitle" class="level-item">Novacta.Shfb.LatexTools Documentation</div></div><div id="LangFilterSearchContainer" class="level-right"><div class="level-item"><div class="dropdown is-hoverable"><div class="dropdown-trigger"><button class="button" aria-haspopup="true" aria-controls="dropdown-menu"><span id="CurrentLanguage"></span><span class="icon is-small"><i class="fa fa-angle-down" aria-hidden="true"></i></span></button></div><div class="dropdown-menu" role="menu"><div id="LanguageSelections" class="dropdown-content"><a class="dropdown-item languageFilterItem" data-languageId="cs">C#</a><a class="dropdown-item languageFilterItem" data-languageId="vb">VB</a><a class="dropdown-item languageFilterItem" data-languageId="cpp">C++</a><a class="dropdown-item languageFilterItem" data-languageId="fs">F#</a></div></div></div></div><div class="level-item"><form id="SearchForm" action="#" onsubmit="TransferToSearchPage(); return false;"><div class="field"><div class="control has-icons-left"><input id="SearchTerms" class="input" type="text" maxlength="200" placeholder="Search" /><span class="icon is-small is-left"><i class="fa fa-search"></i></span><button id="SearchButton" type="submit" class="is-hidden"></button></div></div></form></div></div></div></div><div class="fixedContent"><nav class="breadcrumb my-1 px-2 border-bottom" role="navigation"><ul id="TopicBreadcrumbs" /></nav><div id="ContentContainer" class="columns pl-5 pr-5 fixedContent"><div id="ShowHideTOCColumn" class="column is-hidden-tablet"><a id="ShowHideTOC">Show/Hide TOC</a></div><div id="TOCColumn" class="column is-hidden-mobile"><nav class="toc"><ul id="TableOfContents" class="toc-menu" /></nav></div><div id="Resizer" class="is-hidden"></div><div id="TopicContent" class="column content is-7"><h1>Getting started with Novacta.Shfb.LatexTools, version 2.0.0</h1><h2 id="sectionInstallLatexTools" class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Installing the LatexTools</h2><div id="IDBABSection"><p><strong>Install a supported version of SHFB</strong></p><p /><p>
 				  Version 2.0.0 of the
 				  <strong>LatexTools</strong>
-				  targets SHFB, version 2021.8.14.0 or later.
+				  targets SHFB, versions 2021.8.14.0 - 2025.3.22.0.
 			  </p><p>
 				  Make sure that a supported SHFB version of your choice
 				  is currently installed on your host machine.
 			  </p><p>
 				  You can download the required SHFB release
 				  <a href="https://github.com/EWSoftware/SHFB/releases" target="_blank" rel="noopener noreferrer">here</a>.
-				  Notice that version 2.0.0 requires package
-				  <a href="https://ctan.org/pkg/preview" target="_blank" rel="noopener noreferrer">preview</a>.
 			  </p><p /><p><strong>Install a full LaTeX distribution</strong></p><p /><p>
 				  You need a full TeX distribution installed on your host machine.
 
 				  You can find a list of TeX implementations
 				  <a href="https://www.latex-project.org/get/#tex-distributions" target="_blank" rel="noopener noreferrer">here</a>.
-			  </p><p /><p><strong>Create a SHFB documentation project</strong></p><p>
+			  </p><article class="message is-warning"><div class="message-header"><p><span class="icon"><i class="fa fa-warning"></i></span>  Important</p></div><div class="message-body"><p>
+				  Notice that version 2.0.0 of the tools requires the LaTeX package
+				  <a href="https://ctan.org/pkg/preview" target="_blank" rel="noopener noreferrer">preview</a>.	
+				  </p></div></article><p /><p><strong>Create a SHFB documentation project</strong></p><p>
 				  Documentation projects can be created via the
 				  <a href="http://ewsoftware.github.io/SHFB/html/d5dbf017-25f1-48cb-86db-90f76ee8f4d7.htm" target="_blank" rel="noopener noreferrer">SHFB standalone GUI</a>,
 				  or via the
-				  <a href="http://ewsoftware.github.io/SHFB/html/78507051-0fc0-479b-9d47-78a10398eaf2.htm#NewProject/" target="_blank" rel="noopener noreferrer">SHFB Visual Studio package</a>.
+				  <a href="https://ewsoftware.github.io/SHFB/html/b128ad2a-787e-48c7-b946-f6953080c386.htm" target="_blank" rel="noopener noreferrer">SHFB Visual Studio package</a>.
 			  </p><p /><p><strong>Add the Latex Tools to the SHFB documentation project</strong></p><p /><p>
 				  Right click on node <strong>Component Packages</strong> of your project
 				  and, from the contextual menu, select <strong>Manage Component Packages...</strong>
@@ -259,43 +260,43 @@
 								  tiny
 							  </strong></p></td><td><p>
 							  50
-						  </p></td><td><p><img alt="LaTeX equation" src="../media/clatex_288.svg" style="vertical-align: -3px" /></p></td></tr><tr><td><p><strong>
+						  </p></td><td><p><img alt="LaTeX equation" src="../media/clatex_10.svg" style="vertical-align: -3px" /></p></td></tr><tr><td><p><strong>
 								  scriptsize
 							  </strong></p></td><td><p>
 							  70
-						  </p></td><td><p><img alt="LaTeX equation" src="../media/clatex_289.svg" style="vertical-align: -5px" /></p></td></tr><tr><td><p><strong>
+						  </p></td><td><p><img alt="LaTeX equation" src="../media/clatex_11.svg" style="vertical-align: -5px" /></p></td></tr><tr><td><p><strong>
 								  footnotesize
 							  </strong></p></td><td><p>
 							  80
-						  </p></td><td><p><img alt="LaTeX equation" src="../media/clatex_290.svg" style="vertical-align: -5px" /></p></td></tr><tr><td><p><strong>
+						  </p></td><td><p><img alt="LaTeX equation" src="../media/clatex_12.svg" style="vertical-align: -5px" /></p></td></tr><tr><td><p><strong>
 								  small
 							  </strong></p></td><td><p>
 							  90
-						  </p></td><td><p><img alt="LaTeX equation" src="../media/clatex_291.svg" style="vertical-align: -5px" /></p></td></tr><tr><td><p><strong>
+						  </p></td><td><p><img alt="LaTeX equation" src="../media/clatex_13.svg" style="vertical-align: -5px" /></p></td></tr><tr><td><p><strong>
 								  normalsize
 							  </strong></p></td><td><p>
 							  100
-						  </p></td><td><p><img alt="LaTeX equation" src="../media/clatex_292.svg" style="vertical-align: -6px" /></p></td></tr><tr><td><p><strong>
+						  </p></td><td><p><img alt="LaTeX equation" src="../media/clatex_14.svg" style="vertical-align: -6px" /></p></td></tr><tr><td><p><strong>
 								  large
 							  </strong></p></td><td><p>
 							  120
-						  </p></td><td><p><img alt="LaTeX equation" src="../media/clatex_293.svg" style="vertical-align: -7px" /></p></td></tr><tr><td><p><strong>
+						  </p></td><td><p><img alt="LaTeX equation" src="../media/clatex_15.svg" style="vertical-align: -7px" /></p></td></tr><tr><td><p><strong>
 								  Large
 							  </strong></p></td><td><p>
 							  144
-						  </p></td><td><p><img alt="LaTeX equation" src="../media/clatex_294.svg" style="vertical-align: -9px" /></p></td></tr><tr><td><p><strong>
+						  </p></td><td><p><img alt="LaTeX equation" src="../media/clatex_16.svg" style="vertical-align: -9px" /></p></td></tr><tr><td><p><strong>
 								  LARGE
 							  </strong></p></td><td><p>
 							  172.8
-						  </p></td><td><p><img alt="LaTeX equation" src="../media/clatex_295.svg" style="vertical-align: -10px" /></p></td></tr><tr><td><p><strong>
+						  </p></td><td><p><img alt="LaTeX equation" src="../media/clatex_17.svg" style="vertical-align: -10px" /></p></td></tr><tr><td><p><strong>
 								  huge
 							  </strong></p></td><td><p>
 							  207.4
-						  </p></td><td><p><img alt="LaTeX equation" src="../media/clatex_296.svg" style="vertical-align: -11px" /></p></td></tr><tr><td><p><strong>
+						  </p></td><td><p><img alt="LaTeX equation" src="../media/clatex_18.svg" style="vertical-align: -11px" /></p></td></tr><tr><td><p><strong>
 								  Huge
 							  </strong></p></td><td><p>
 							  248.8
-						  </p></td><td><p><img alt="LaTeX equation" src="../media/clatex_297.svg" style="vertical-align: -13px" /></p></td></tr></table><p>
+						  </p></td><td><p><img alt="LaTeX equation" src="../media/clatex_19.svg" style="vertical-align: -13px" /></p></td></tr></table><p>
 				  As an example, the following file printout shows the source code for
 				  type
 				  <a href="T_SampleClassLibrary_IntegerOperation.htm">IntegerOperation</a>,
@@ -580,8 +581,7 @@ namespace SampleClassLibrary
 				  You can check
 				  <a href="8da2157d-b4f7-4b54-8e31-04582d7df903.htm">here</a>
 				  how such conceptual topic looks like.
-			  </p></div></div><div id="InThisArticleColumn" class="column is-hidden-mobile"><nav class="menu sticky is-hidden"><p class="menu-label"><strong>In This Article</strong></p><ul id="InThisArticleMenu" class="menu-list"><li><a class="quickLink">Installing the LatexTools</a></li><li><a class="quickLink">Using the LatexTools</a></li><li><a class="quickLink">Adding LaTeX equations in XML comments</a></li><li><a class="quickLink">Adding LaTeX equations in conceptual topics</a></li></ul></nav></div></div></div><footer id="PageFooter" class="footer border-top py-3 fixedFooter"><div class="columns"><div class="column"><p>Copyright © 2021, Giovanni Lafratta, All Rights Reserved.</p> 
-				</div><div class="column"> 
+			  </p></div></div><div id="InThisArticleColumn" class="column is-hidden-mobile"><nav class="menu sticky is-hidden"><p class="menu-label"><strong>In This Article</strong></p><ul id="InThisArticleMenu" class="menu-list"><li><a class="quickLink">Installing the LatexTools</a></li><li><a class="quickLink">Using the LatexTools</a></li><li><a class="quickLink">Adding LaTeX equations in XML comments</a></li><li><a class="quickLink">Adding LaTeX equations in conceptual topics</a></li></ul></nav></div></div></div><footer id="PageFooter" class="footer border-top py-3 fixedFooter"><div class="columns"><div id="FooterContent" class="column"><p>Copyright © 2021, Giovanni Lafratta, All Rights Reserved.</p> 
 				</div></div></footer></div><script>$(function(){
 SetDefaultLanguage("cs");
 InitializeQuickLinks();

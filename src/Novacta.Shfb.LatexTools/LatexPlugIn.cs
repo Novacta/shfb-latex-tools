@@ -2,9 +2,9 @@
 // Licensed under the MIT license. 
 // See the LICENSE file in the project root for more information.
 
-using Sandcastle.Core;
-using SandcastleBuilder.Utils.BuildComponent;
-using SandcastleBuilder.Utils.BuildEngine;
+using Sandcastle.Core.BuildEngine;
+using Sandcastle.Core.PlugIn;
+using Sandcastle.Core.Project;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -29,7 +29,7 @@ namespace Novacta.Shfb.LatexTools
 
         private List<ExecutionPoint> executionPoints;
 
-        private BuildProcess builder;
+        private IBuildProcess builder;
 
         #endregion
 
@@ -67,7 +67,7 @@ namespace Novacta.Shfb.LatexTools
         /// <param name="configuration">
         /// The configuration data that the plug-in should use to initialize itself.
         /// </param>        
-        public void Initialize(BuildProcess buildProcess, XElement configuration)
+        public void Initialize(IBuildProcess buildProcess, XElement configuration)
         {
             if (configuration is null)
             {
@@ -183,7 +183,7 @@ namespace Novacta.Shfb.LatexTools
                                         imgSrcValueFormat,
                                         fileName,
                                         fileExtension,
-                                        this.builder.ResolvedHtmlHelpName,
+                                        this.builder.ResolvedHelpTitle, 
                                         this.builder.CurrentProject.Language.Name);
                                 }
                                 break;
@@ -214,7 +214,7 @@ namespace Novacta.Shfb.LatexTools
                                         imgSrcValueFormat,
                                         fileName,
                                         fileExtension,
-                                        this.builder.ResolvedHtmlHelpName,
+                                        this.builder.ResolvedHelpTitle, 
                                         this.builder.CurrentProject.Language.Name);
 
                                     embed.Attributes.Append(src);

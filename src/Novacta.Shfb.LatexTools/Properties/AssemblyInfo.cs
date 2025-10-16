@@ -25,7 +25,7 @@ using System.Runtime.InteropServices;
 // This defines constants that can be used here and in the custom presentation style export attribute
 internal static partial class AssemblyInfo
 {
-    public const string ProductVersion = "2.0.0";
+    public const string ProductVersion = "3.0.0";
 
     public const string Description = 
         "Provides support for LaTeX formatted formulas " +

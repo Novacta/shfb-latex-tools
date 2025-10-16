@@ -8,7 +8,8 @@ using System.Xml.Linq;
 using Sandcastle.Core;
 using Sandcastle.Core.PresentationStyle.Transformation;
 using Sandcastle.Core.PresentationStyle.Transformation.Elements;
-using SandcastleBuilder.Utils.BuildEngine;
+using Sandcastle.Core.BuildEngine;
+using Sandcastle.Core.Project;
 
 namespace Novacta.Shfb.LatexTools
 {

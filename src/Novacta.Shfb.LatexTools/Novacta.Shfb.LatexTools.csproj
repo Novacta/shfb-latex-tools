@@ -3,7 +3,7 @@
 			 for information on why conditional target frameworks are used. -->
 	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
 		<!-- Use the full framework for debugging -->
-		<TargetFramework>net47</TargetFramework>
+		<TargetFramework>net48</TargetFramework>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)'=='Release'">
@@ -26,7 +26,7 @@
 		<Product>Novacta.Shfb.LatexTools</Product>
 		<Title>Novacta.Shfb.LatexTools</Title>
 		<Description>Provides support for adding LaTeX content in reference XML comments and conceptual topics created with Sandcastle Help File Builder.</Description>
-		<Version>2.0.0</Version>
+		<Version>3.0.0</Version>
 		<Authors>Giovanni Lafratta</Authors>
 		<Company>Novacta</Company>
 		<PackageIconUrl></PackageIconUrl>
@@ -56,13 +56,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="EWSoftware.Sandcastle.Core" Version="2022.12.30" />
-		<PackageReference Include="EWSoftware.SandcastleBuilder.Utils" Version="2022.12.30" />
-		<PackageReference Include="System.ComponentModel.Composition" Version="5.0.0" />
+		<PackageReference Include="EWSoftware.Sandcastle.Core" Version="2025.9.30.0" />
+		<PackageReference Include="System.ComponentModel.Composition" Version="9.0.8" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="..\Novacta.Shfb.LatexConfiguration\bin\$(Configuration)\net472\Novacta.Shfb.LatexConfiguration.dll">
+		<None Include="..\Novacta.Shfb.LatexConfiguration\bin\$(Configuration)\net48\Novacta.Shfb.LatexConfiguration.dll">
 			<Pack>true</Pack>
 			<PackagePath>tools\</PackagePath>
 			<Visible>false</Visible>

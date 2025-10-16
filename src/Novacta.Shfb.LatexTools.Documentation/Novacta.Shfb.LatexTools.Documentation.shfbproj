@@ -51,7 +51,7 @@
     <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
     <SaveComponentCacheCapacity>100</SaveComponentCacheCapacity>
     <HelpTitle>Novacta.Shfb.LatexTools Documentation</HelpTitle>
-    <HelpFileVersion>2.0.0.0</HelpFileVersion>
+    <HelpFileVersion>3.0.0.0</HelpFileVersion>
     <NamingMethod>MemberName</NamingMethod>
     <ContentPlacement>AboveNamespaces</ContentPlacement>
     <RootNamespaceContainer>False</RootNamespaceContainer>
@@ -115,10 +115,12 @@
     <None Include="Content\LatexTools.aml" />
     <None Include="Content\LatexTools_v1.aml" />
     <None Include="Content\LatexTools_v2.aml" />
+    <None Include="Content\LatexTools_v3.aml" />
     <None Include="Content\License.aml" />
     <None Include="Content\OperatingOnIntegers.aml" />
     <None Include="Content\VersionHistory\v1.0.0.0.aml" />
     <None Include="Content\VersionHistory\v2.0.0.0.aml" />
+    <None Include="Content\VersionHistory\v3.0.0.0.aml" />
     <None Include="Content\VersionHistory\VersionHistory.aml" />
     <None Include="Content\Welcome.aml" />
     <None Include="Content\OperatingOnIntegerArrays.aml" />

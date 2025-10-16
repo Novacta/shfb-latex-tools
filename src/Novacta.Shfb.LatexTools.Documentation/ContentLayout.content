@@ -6,6 +6,7 @@
     </HelpKeywords>
   </Topic>
   <Topic id="781b55db-9cd4-401d-9c24-a5e4b93fe476" visible="True" isExpanded="true" title="Adding LaTeX equations">
+    <Topic id="e3929778-c027-44f1-824a-18717ab56bcf" visible="False" title="Getting started with Novacta.Shfb.LatexTools, version 3.0.0" />
     <Topic id="d9316b3b-df7d-4b7e-9e85-e53feec30f9c" visible="False" title="Getting started with Novacta.Shfb.LatexTools, version 2.0.0" />
     <Topic id="bd3da6fb-e8fb-4edc-96da-f5314a38b16f" visible="False" title="Getting started with Novacta.Shfb.LatexTools, version 1.0.0" />
   </Topic>
@@ -14,15 +15,16 @@
     <HelpKeywords>
       <HelpKeyword index="K" term="version, history" />
     </HelpKeywords>
-    <Topic id="5f1a64fb-4ea5-4a81-80eb-51c422544e28" visible="True" title="Version 1.0.0">
+    <Topic id="8fff95cc-b2fc-41fa-875e-b5d035cf6611" visible="True" title="Version 3.0.0" />
+    <Topic id="1eb1b9dc-881d-445a-bca7-cc9f74f2ff3d" visible="True" title="Version 2.0.0" />
+    <Topic id="5f1a64fb-4ea5-4a81-80eb-51c422544e28" visible="True" isSelected="true" title="Version 1.0.0">
       <HelpKeywords>
         <HelpKeyword index="K" term="version, 1.0.0.0" />
       </HelpKeywords>
     </Topic>
-    <Topic id="1eb1b9dc-881d-445a-bca7-cc9f74f2ff3d" visible="True" title="Version 2.0.0" />
   </Topic>
   <Topic id="c6be8653-b23b-4979-bcbe-b44a49c8710c" visible="False" noFile="true" isExpanded="true" title="SampleClassLibrary Topics">
-    <Topic id="8da2157d-b4f7-4b54-8e31-04582d7df903" visible="False" isSelected="true" title="Operating on integers" />
+    <Topic id="8da2157d-b4f7-4b54-8e31-04582d7df903" visible="False" title="Operating on integers" />
     <Topic id="4c3871a5-d7c6-477c-96ee-e71f0a67f7a8" visible="False" title="Operating on integer arrays" />
   </Topic>
 </Topics>

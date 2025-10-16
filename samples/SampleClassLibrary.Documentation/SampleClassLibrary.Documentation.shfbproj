@@ -65,21 +65,24 @@
     <ComponentConfigurations>
       <ComponentConfig id="Novacta LaTeX Component" enabled="True">
         <component id="Novacta LaTeX Component">
-          <documentClass value="article" />
-          <imageFileFormat value="svg" />
-          <additionalPreambleCommands>
-            <line>% Paste here your additional preamble commands
+  <documentClass value="article" />
+  <imageFileFormat value="svg" />
+  <additionalPreambleCommands>
+    <line>% Paste here your additional preamble commands
 </line>
-          </additionalPreambleCommands>
-          <latexDefaultMode value="display" />
-          <imageDepthCorrection value="0" />
-          <imageScalePercentage value="100" />
-          <redirectFileProcessors value="True" />
-          <latexBinPath value="" />
-          <helpType value="{@HelpFileFormat}" />
-          <basePath value="{@WorkingFolder}" />
-          <languagefilter value="true" />
-        </component>
+    <line>
+</line>
+    <line></line>
+  </additionalPreambleCommands>
+  <latexDefaultMode value="display" />
+  <imageDepthCorrection value="0" />
+  <imageScalePercentage value="100" />
+  <redirectFileProcessors value="True" />
+  <latexBinPath value="" />
+  <helpType value="{@HelpFileFormat}" />
+  <basePath value="{@WorkingFolder}" />
+  <languagefilter value="true" />
+</component>
       </ComponentConfig>
     </ComponentConfigurations>
     <ComponentPath>.\</ComponentPath>
