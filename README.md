@@ -10,7 +10,7 @@ provides types to manage
 Available versions of the **LatexTools** have different target presentation styles, as described in the following table.
 
 | Version | Target presentation styles |
-| ------- | --------------- | ------ |
+| ------- | --------------- | 
 | v2.0.0 or later  | Default 2022, Markdown, OpenXml, VS2013 |  
 | v1.0.0 | Customized versions of VS2010 and VS2013 styles |
 
